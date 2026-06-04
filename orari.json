@@ -1,18 +1,88 @@
 {
   "lista": [
-    { "giorno": "Lunedì", "ora": "07:30", "corso": "Hatha Yoga", "insegnante": "Marta", "colore": "sage" },
-    { "giorno": "Lunedì", "ora": "18:30", "corso": "Meditazione", "insegnante": "Sara", "colore": "lav" },
-    { "giorno": "Lunedì", "ora": "20:00", "corso": "Vinyasa", "insegnante": "Luca", "colore": "rose" },
-    { "giorno": "Martedì", "ora": "09:00", "corso": "Yin Yoga", "insegnante": "Sara", "colore": "lav" },
-    { "giorno": "Martedì", "ora": "19:00", "corso": "Pranayama", "insegnante": "Marta", "colore": "beige" },
-    { "giorno": "Mercoledì", "ora": "07:30", "corso": "Vinyasa", "insegnante": "Luca", "colore": "sage" },
-    { "giorno": "Mercoledì", "ora": "18:00", "corso": "Hatha Yoga", "insegnante": "Marta", "colore": "rose" },
-    { "giorno": "Mercoledì", "ora": "20:00", "corso": "Yoga Nidra", "insegnante": "Sara", "colore": "lav" },
-    { "giorno": "Giovedì", "ora": "09:00", "corso": "Meditazione", "insegnante": "Sara", "colore": "beige" },
-    { "giorno": "Giovedì", "ora": "19:00", "corso": "Yin Yoga", "insegnante": "Marta", "colore": "sage" },
-    { "giorno": "Venerdì", "ora": "07:30", "corso": "Pranayama", "insegnante": "Luca", "colore": "lav" },
-    { "giorno": "Venerdì", "ora": "18:30", "corso": "Vinyasa", "insegnante": "Luca", "colore": "rose" },
-    { "giorno": "Sabato", "ora": "09:00", "corso": "Hatha Yoga", "insegnante": "Marta", "colore": "sage" },
-    { "giorno": "Sabato", "ora": "10:30", "corso": "Yoga Nidra", "insegnante": "Sara", "colore": "lav" }
+    {
+      "giorno": "Lunedì",
+      "ora": "07:30",
+      "corso": "Hatha Yoga",
+      "insegnante": "Marta",
+      "colore": "sage"
+    },
+    {
+      "giorno": "Martedì",
+      "ora": "09:00",
+      "corso": "Yin Yoga",
+      "insegnante": "Sara",
+      "colore": "lav"
+    },
+    {
+      "giorno": "Martedì",
+      "ora": "19:00",
+      "corso": "Pranayama",
+      "insegnante": "Marta",
+      "colore": "beige"
+    },
+    {
+      "giorno": "Mercoledì",
+      "ora": "07:30",
+      "corso": "Vinyasa",
+      "insegnante": "Luca",
+      "colore": "sage"
+    },
+    {
+      "giorno": "Mercoledì",
+      "ora": "18:00",
+      "corso": "Hatha Yoga",
+      "insegnante": "Marta",
+      "colore": "rose"
+    },
+    {
+      "giorno": "Mercoledì",
+      "ora": "20:00",
+      "corso": "Yoga Nidra",
+      "insegnante": "Sara",
+      "colore": "lav"
+    },
+    {
+      "giorno": "Giovedì",
+      "ora": "09:00",
+      "corso": "Meditazione",
+      "insegnante": "Sara",
+      "colore": "beige"
+    },
+    {
+      "giorno": "Giovedì",
+      "ora": "19:00",
+      "corso": "Yin Yoga",
+      "insegnante": "Marta",
+      "colore": "sage"
+    },
+    {
+      "giorno": "Venerdì",
+      "ora": "07:30",
+      "corso": "Pranayama",
+      "insegnante": "Luca",
+      "colore": "lav"
+    },
+    {
+      "giorno": "Venerdì",
+      "ora": "18:30",
+      "corso": "Vinyasa",
+      "insegnante": "Luca",
+      "colore": "rose"
+    },
+    {
+      "giorno": "Sabato",
+      "ora": "09:00",
+      "corso": "Hatha Yoga",
+      "insegnante": "Marta",
+      "colore": "sage"
+    },
+    {
+      "giorno": "Sabato",
+      "ora": "10:30",
+      "corso": "Yoga Nidra",
+      "insegnante": "Sara",
+      "colore": "lav"
+    }
   ]
 }
