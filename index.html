@@ -417,7 +417,7 @@ function setWaButtons(num){
 
 async function init(){
   // GENERALE
-  const g=await fetchJSON('_data/generale.json');
+  const g=await fetchJSON('generale.json');
   if(g){
     document.title=g.nome_studio||'Iyengar Yoga Bari';
     document.getElementById('siteTitle').textContent=g.nome_studio;
@@ -437,7 +437,7 @@ async function init(){
   }
 
   // HERO
-  const h=await fetchJSON('_data/hero.json');
+  const h=await fetchJSON('hero.json');
   if(h){
     document.getElementById('heroT1').textContent=h.titolo1||'';
     document.getElementById('heroT2').textContent=h.titolo2||'';
@@ -451,7 +451,7 @@ async function init(){
   }
 
   // INTRO
-  const i=await fetchJSON('_data/intro.json');
+  const i=await fetchJSON('intro.json');
   if(i){
     document.getElementById('introT1').textContent=i.titolo1||'';
     document.getElementById('introT2').textContent=i.titolo2||'';
@@ -466,7 +466,7 @@ async function init(){
   }
 
   // CORSI
-  const c=await fetchJSON('_data/corsi.json');
+  const c=await fetchJSON('corsi.json');
   if(c&&c.lista){
     const grid=document.getElementById('corsiGrid');
     const sel=document.getElementById('corsoSelect');
@@ -488,7 +488,7 @@ async function init(){
   }
 
   // ORARI
-  const o=await fetchJSON('_data/orari.json');
+  const o=await fetchJSON('orari.json');
   if(o&&o.lista){
     const giorni=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
     const grid=document.getElementById('plannerGrid');
@@ -508,7 +508,7 @@ async function init(){
   }
 
   // GALLERIA
-  const gal=await fetchJSON('_data/galleria.json');
+  const gal=await fetchJSON('galleria.json');
   const gallGrid=document.getElementById('galleryGrid');
   gallGrid.innerHTML='';
   if(gal){
@@ -529,7 +529,7 @@ async function init(){
   }
 
   // TESTIMONIANZE
-  const t=await fetchJSON('_data/testimonianze.json');
+  const t=await fetchJSON('testimonianze.json');
   if(t&&t.lista){
     const colors=['var(--rose)','#8B7EC8','var(--sage)'];
     document.getElementById('testiGrid').innerHTML=t.lista.map((ti,idx)=>`
@@ -546,7 +546,7 @@ async function init(){
   }
 
   // RATING
-  const r=await fetchJSON('_data/rating.json');
+  const r=await fetchJSON('rating.json');
   if(r&&r.lista){
     const inner=document.getElementById('ratingInner');
     r.lista.forEach(rt=>{
