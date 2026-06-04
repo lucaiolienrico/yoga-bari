@@ -2,6 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
+site_url: https://ilfenicottero.netlify.app
+display_url: https://ilfenicottero.netlify.app
+
 media_folder: "assets/img"            # dove si salvano le foto caricate
 public_folder: "/assets/img"
 
