@@ -1,24 +1,25 @@
 [build]
   publish = "."
 
-# Redirect SPA — necessario per far funzionare /admin
+# Admin panel — DEVE stare PRIMA del catch-all
 [[redirects]]
   from = "/admin"
   to = "/admin/index.html"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/admin/*"
+  from = "/admin/"
   to = "/admin/index.html"
   status = 200
+  force = true
 
-# Catch-all per SPA routing
+# Catch-all SPA — ULTIMA regola
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Header sicurezza
 [[headers]]
   for = "/*"
   [headers.values]
