@@ -1,0 +1,7 @@
+{
+  "lista": [
+    { "portale": "Google", "sub": "Reviews", "punteggio": "4.9", "recensioni": "128" },
+    { "portale": "Facebook", "sub": "Pagina", "punteggio": "4.8", "recensioni": "94" },
+    { "portale": "Treatwell", "sub": "Portale", "punteggio": "4.7", "recensioni": "56" }
+  ]
+}

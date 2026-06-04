@@ -1,0 +1,10 @@
+{
+  "lista": [
+    { "emoji": "🌿", "nome": "Hatha Yoga", "livello": "Tutti i livelli", "durata": "60 min", "max": "12", "descrizione": "Posture statiche, respiro consapevole e meditazione per un'armonia profonda tra corpo e mente." },
+    { "emoji": "🌊", "nome": "Vinyasa Flow", "livello": "Intermedio", "durata": "75 min", "max": "10", "descrizione": "Sequenze dinamiche sincronizzate al respiro. Energia, fluidità e consapevolezza del movimento." },
+    { "emoji": "🌙", "nome": "Yin Yoga", "livello": "Tutti i livelli", "durata": "75 min", "max": "12", "descrizione": "Posture passive mantenute a lungo per sciogliere tensioni profonde e migliorare la flessibilità." },
+    { "emoji": "✨", "nome": "Yoga Nidra", "livello": "Tutti i livelli", "durata": "60 min", "max": "15", "descrizione": "Il \"sonno yogico\". Pratica guidata di rilassamento profondo che riduce stress, ansia e insonnia." },
+    { "emoji": "🌬️", "nome": "Pranayama", "livello": "Avanzato", "durata": "45 min", "max": "10", "descrizione": "Tecniche di controllo del respiro per aumentare vitalità, chiarezza mentale e connessione energetica." },
+    { "emoji": "🪷", "nome": "Meditazione", "livello": "Tutti i livelli", "durata": "45 min", "max": "15", "descrizione": "Pratiche di mindfulness e meditazione guidata per ridurre lo stress e coltivare calma interiore." }
+  ]
+}

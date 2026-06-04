@@ -1,0 +1,206 @@
+backend:
+  name: github
+  repo: TUO-USERNAME/yoga-bari        # ← cambia con: nomeutente/nome-repo
+  branch: main
+
+media_folder: "assets/img"            # dove si salvano le foto caricate
+public_folder: "/assets/img"
+
+locale: it                             # interfaccia in italiano
+
+collections:
+
+  # ─────────────────────────────────────────
+  # 1. IMPOSTAZIONI GENERALI
+  # ─────────────────────────────────────────
+  - name: "impostazioni"
+    label: "⚙️ Impostazioni Studio"
+    files:
+
+      - name: "generale"
+        label: "Info Generali"
+        file: "_data/generale.json"
+        fields:
+          - { label: "Nome Studio", name: "nome_studio", widget: "string", default: "Iyengar Yoga Bari" }
+          - { label: "Slogan / Sottotitolo", name: "slogan", widget: "string" }
+          - { label: "📞 Numero WhatsApp", name: "whatsapp", widget: "string", hint: "Formato internazionale senza +: es. 393401234567" }
+          - { label: "📧 Email", name: "email", widget: "string" }
+          - { label: "📍 Indirizzo", name: "indirizzo", widget: "string" }
+          - { label: "🕐 Orari di apertura", name: "orari_apertura", widget: "string" }
+          - { label: "P.IVA", name: "piva", widget: "string" }
+          - { label: "Link Facebook", name: "social_fb", widget: "string", required: false }
+          - { label: "Link Instagram", name: "social_ig", widget: "string", required: false }
+          - { label: "Link YouTube", name: "social_yt", widget: "string", required: false }
+
+  # ─────────────────────────────────────────
+  # 2. SEZIONE HERO
+  # ─────────────────────────────────────────
+  - name: "hero"
+    label: "🖼️ Hero (Prima Schermata)"
+    files:
+      - name: "hero"
+        label: "Contenuto Hero"
+        file: "_data/hero.json"
+        fields:
+          - { label: "Titolo riga 1", name: "titolo1", widget: "string", default: "Iyengar" }
+          - { label: "Titolo riga 2", name: "titolo2", widget: "string", default: "Yoga Bari" }
+          - { label: "Sottotitolo in grassetto", name: "sub", widget: "string" }
+          - { label: "Testo descrittivo", name: "descrizione", widget: "text" }
+          - { label: "Citazione in fondo", name: "citazione", widget: "string", required: false }
+          - { label: "Testo bottone principale", name: "btn_testo", widget: "string", default: "Scopri di più →" }
+          - label: "📸 Foto Hero (lato destro)"
+            name: foto_hero
+            widget: image
+            hint: "Immagine verticale consigliata. Dimensioni consigliate: 800x1000px"
+          - { label: "Testo alternativo foto", name: "foto_hero_alt", widget: "string", default: "Yoga Bari" }
+
+  # ─────────────────────────────────────────
+  # 3. SEZIONE INTRO
+  # ─────────────────────────────────────────
+  - name: "intro"
+    label: "🌿 Sezione Intro"
+    files:
+      - name: "intro"
+        label: "Ritrova la tua pace interiore"
+        file: "_data/intro.json"
+        fields:
+          - { label: "Titolo (riga 1)", name: "titolo1", widget: "string", default: "Ritrova la tua" }
+          - { label: "Titolo (riga 2, corsivo)", name: "titolo2", widget: "string", default: "pace interiore" }
+          - { label: "Paragrafo 1", name: "para1", widget: "text" }
+          - { label: "Paragrafo 2", name: "para2", widget: "text", required: false }
+          - { label: "Testo bottone WhatsApp", name: "btn_wa", widget: "string", default: "Prenota la tua prima lezione" }
+          - { label: "Nota sotto il bottone", name: "nota", widget: "string", default: "Prima lezione gratuita" }
+          - label: "📸 Foto Disciplina"
+            name: foto_disciplina
+            widget: image
+            hint: "Foto verticale 4:5. Es: posa yoga, classe, insegnante"
+
+  # ─────────────────────────────────────────
+  # 4. CORSI
+  # ─────────────────────────────────────────
+  - name: "corsi"
+    label: "🧘 Corsi"
+    files:
+      - name: "corsi"
+        label: "Le 6 Discipline"
+        file: "_data/corsi.json"
+        fields:
+          - label: "Corsi"
+            name: "lista"
+            widget: "list"
+            max: 6
+            fields:
+              - { label: "Emoji", name: "emoji", widget: "string", default: "🌿" }
+              - { label: "Nome corso", name: "nome", widget: "string" }
+              - label: "Livello"
+                name: livello
+                widget: select
+                options: ["Tutti i livelli", "Principiante", "Intermedio", "Avanzato"]
+              - { label: "Durata", name: "durata", widget: "string", default: "60 min" }
+              - { label: "Max partecipanti", name: "max", widget: "string", default: "12" }
+              - { label: "Descrizione", name: "descrizione", widget: "text" }
+
+  # ─────────────────────────────────────────
+  # 5. ORARI
+  # ─────────────────────────────────────────
+  - name: "orari"
+    label: "📅 Orari Settimanali"
+    files:
+      - name: "orari"
+        label: "Programmazione Settimanale"
+        file: "_data/orari.json"
+        fields:
+          - label: "Lezioni"
+            name: "lista"
+            widget: "list"
+            fields:
+              - label: "Giorno"
+                name: giorno
+                widget: select
+                options: ["Lunedì","Martedì","Mercoledì","Giovedì","Venerdì","Sabato","Domenica"]
+              - { label: "Orario (es. 07:30)", name: "ora", widget: "string" }
+              - { label: "Nome Corso", name: "corso", widget: "string" }
+              - { label: "Insegnante", name: "insegnante", widget: "string" }
+              - label: "Colore slot"
+                name: colore
+                widget: select
+                options:
+                  - { label: "Verde salvia", value: "sage" }
+                  - { label: "Lavanda", value: "lav" }
+                  - { label: "Rosa", value: "rose" }
+                  - { label: "Beige", value: "beige" }
+
+  # ─────────────────────────────────────────
+  # 6. GALLERIA
+  # ─────────────────────────────────────────
+  - name: "galleria"
+    label: "📷 Galleria"
+    files:
+      - name: "galleria"
+        label: "Foto e Video"
+        file: "_data/galleria.json"
+        fields:
+          - label: "Foto"
+            name: "foto"
+            widget: "list"
+            fields:
+              - label: "Foto"
+                name: src
+                widget: image
+              - { label: "Didascalia", name: "label", widget: "string", required: false }
+              - label: "Dimensione"
+                name: size
+                widget: select
+                options:
+                  - { label: "Normale", value: "normal" }
+                  - { label: "Larga (2 colonne)", value: "wide" }
+                  - { label: "Alta (2 righe)", value: "tall" }
+          - label: "Video (YouTube/Vimeo)"
+            name: "video"
+            widget: "list"
+            fields:
+              - { label: "URL video", name: "url", widget: "string", hint: "es. https://youtube.com/watch?v=XXXXX" }
+              - { label: "Titolo", name: "titolo", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # 7. TESTIMONIANZE
+  # ─────────────────────────────────────────
+  - name: "testimonianze"
+    label: "⭐ Testimonianze"
+    files:
+      - name: "testimonianze"
+        label: "Recensioni Allievi"
+        file: "_data/testimonianze.json"
+        fields:
+          - label: "Testimonianze"
+            name: "lista"
+            widget: "list"
+            fields:
+              - { label: "Nome", name: "nome", widget: "string" }
+              - { label: "Ruolo / Periodo", name: "ruolo", widget: "string" }
+              - { label: "Iniziali (avatar)", name: "iniziali", widget: "string" }
+              - label: "Stelle"
+                name: stelle
+                widget: select
+                options: ["5","4","3","2","1"]
+                default: "5"
+              - { label: "Testo recensione", name: "testo", widget: "text" }
+
+  # ─────────────────────────────────────────
+  # 8. RATING PORTALI
+  # ─────────────────────────────────────────
+  - name: "rating"
+    label: "🏅 Rating Portali"
+    files:
+      - name: "rating"
+        label: "Punteggi Google, Facebook ecc."
+        file: "_data/rating.json"
+        fields:
+          - label: "Portali"
+            name: "lista"
+            widget: "list"
+            fields:
+              - { label: "Nome portale", name: "portale", widget: "string" }
+              - { label: "Sottotitolo", name: "sub", widget: "string" }
+              - { label: "Punteggio (es. 4.9)", name: "punteggio", widget: "string" }
+              - { label: "Numero recensioni", name: "recensioni", widget: "string" }

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="siteTitle">Iyengar Yoga Bari</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rose:#C4789A;--rose-light:#F5EEF2;--rose-dark:#9B5478;
+  --sage:#7A9B72;--sage-light:#E4EDE2;
+  --lav-light:#EEEBf6;--warm-beige:#EDE5D8;
+  --cream:#FAF8F5;--text:#2A2730;--text-mid:#5C5268;--text-light:#9B90A0;
+  --white:#FFFFFF;--wa:#25D366;
+  --font-d:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',sans-serif;
+  --r:10px;--nav-h:72px;
+  --t:0.4s cubic-bezier(.25,.46,.45,.94);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--cream);color:var(--text);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--rose-light);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;background:rgba(250,248,245,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(196,120,154,.12);transition:box-shadow var(--t)}
+.nav-brand{display:flex;align-items:center;gap:.8rem;text-decoration:none}
+.nav-logo-icon{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--rose-light);display:flex;align-items:center;justify-content:center}
+.nav-logo-icon svg{width:26px;height:26px}
+.nav-name{font-size:.78rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--text)}
+.nav-sub{font-size:.62rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light)}
+.nav-right{display:flex;align-items:center;gap:.25rem}
+.nav-links{display:flex;align-items:center;gap:.1rem;list-style:none;margin-right:1.5rem}
+.nav-links a{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;padding:.4rem .7rem;border-radius:4px;transition:color .25s,background .25s}
+.nav-links a:hover{color:var(--rose);background:var(--rose-light)}
+.nav-links .arr::after{content:' ›';opacity:.5}
+.nav-social{display:flex;gap:.4rem}
+.soc-icon{width:32px;height:32px;border-radius:50%;border:1px solid rgba(196,120,154,.3);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:border-color .25s,background .25s}
+.soc-icon:hover{border-color:var(--rose);background:var(--rose-light)}
+.soc-icon svg{width:14px;height:14px;stroke:var(--text-mid);stroke-width:1.5;fill:none}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-hamburger span{width:22px;height:1.5px;background:var(--text-mid);border-radius:2px}
+
+/* HERO */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-top:var(--nav-h);overflow:hidden}
+.hero-left{padding:5rem 4rem 5rem 3rem;position:relative;z-index:2}
+.hero-title{font-family:var(--font-d);font-size:clamp(2.8rem,4.5vw,5rem);font-weight:400;line-height:1.08;color:var(--rose);letter-spacing:.02em;margin-bottom:1.2rem;text-transform:uppercase}
+.hero-sub{font-size:1.15rem;font-weight:400;color:var(--text-mid);margin-bottom:.8rem}
+.hero-desc{font-family:var(--font-d);font-size:1.12rem;font-weight:300;font-style:italic;color:var(--text-light);line-height:1.7;max-width:440px;margin-bottom:2.5rem}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:2.8rem}
+.btn-discover{background:var(--rose);color:var(--white);padding:.8rem 2rem;border-radius:50px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background var(--t),transform .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-discover:hover{background:var(--rose-dark);transform:translateY(-2px)}
+.btn-wa{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--wa);border:1.5px solid var(--wa);padding:.78rem 1.6rem;border-radius:50px;font-size:.82rem;font-weight:500;text-decoration:none;transition:background .3s,color .3s}
+.btn-wa:hover{background:var(--wa);color:var(--white)}
+.btn-wa svg,.btn-wa-body svg,.btn-wa-dark svg{width:16px;height:16px;fill:currentColor}
+.btn-wa-body{display:inline-flex;align-items:center;gap:.5rem;background:var(--wa);color:var(--white);padding:.85rem 1.8rem;border-radius:50px;font-size:.85rem;font-weight:500;text-decoration:none;transition:background .3s,transform .2s;box-shadow:0 8px 24px rgba(37,211,102,.25)}
+.btn-wa-body:hover{background:#1da851;transform:translateY(-2px)}
+.hero-divider{width:48px;height:1px;background:var(--rose-light);margin-bottom:1.2rem}
+.hero-claim{font-family:var(--font-d);font-size:1.1rem;font-style:italic;font-weight:300;color:var(--text-mid);line-height:1.6}
+.hero-right{height:100vh;position:relative;overflow:hidden}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:grayscale(30%) contrast(.95)}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--cream) 0%,rgba(250,248,245,.08) 35%);z-index:1;pointer-events:none}
+.hero-img-placeholder{width:100%;height:100%;background:linear-gradient(160deg,#E8C9D8 0%,#D6D0E8 45%,#B8C9B2 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem}
+.hero-img-placeholder svg{opacity:.35;width:80px;height:80px}
+.hero-img-placeholder p{font-family:var(--font-d);font-style:italic;font-size:1rem;color:var(--rose-dark);opacity:.6;text-align:center}
+
+/* INTRO */
+#intro{background:var(--rose-light);padding:5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.intro-img{border-radius:32px 32px 32px 0;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 64px rgba(196,120,154,.18)}
+.intro-img img{width:100%;height:100%;object-fit:cover;display:block}
+.intro-img-placeholder{width:100%;height:100%;min-height:340px;background:linear-gradient(160deg,var(--rose-light) 0%,#E8C9D8 50%,var(--lav-light) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem}
+.intro-img-placeholder svg{opacity:.35;width:56px;height:56px}
+.intro-img-placeholder span{font-family:var(--font-d);font-style:italic;font-size:.9rem;color:var(--rose-dark);opacity:.6}
+.sec-label{display:block;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--rose);margin-bottom:.8rem}
+.sec-title{font-family:var(--font-d);font-size:clamp(2rem,3vw,3rem);font-weight:300;color:var(--text);line-height:1.15;margin-bottom:1.4rem}
+.sec-title em{font-style:italic;color:var(--rose)}
+.intro-content p{font-size:.92rem;font-weight:300;color:var(--text-mid);line-height:1.85;margin-bottom:1rem}
+.intro-cta{margin-top:2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.book-note{font-size:.75rem;color:var(--text-light);font-style:italic;font-family:var(--font-d)}
+
+/* CORSI */
+#corsi{padding:5rem 3rem;background:var(--cream)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem}
+.corsi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.corso-card{background:var(--white);border-radius:16px;padding:1.8rem;border:1px solid rgba(196,120,154,.1);position:relative;overflow:hidden;transition:transform var(--t),box-shadow var(--t)}
+.corso-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cc,var(--rose-light));border-radius:8px 8px 0 0}
+.corso-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(196,120,154,.12)}
+.corso-card:nth-child(1){--cc:var(--rose)}.corso-card:nth-child(2){--cc:#8B7EC8}.corso-card:nth-child(3){--cc:var(--sage)}.corso-card:nth-child(4){--cc:var(--rose-dark)}.corso-card:nth-child(5){--cc:#C4A882}.corso-card:nth-child(6){--cc:#8B7EC8}
+.corso-emoji{font-size:1.6rem;margin-bottom:1rem;display:block}
+.corso-name{font-family:var(--font-d);font-size:1.25rem;font-weight:400;color:var(--text);margin-bottom:.4rem}
+.corso-level{display:inline-block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .65rem;border-radius:50px;background:var(--rose-light);color:var(--rose-dark);margin-bottom:.9rem}
+.corso-desc{font-size:.83rem;font-weight:300;color:var(--text-mid);line-height:1.7;margin-bottom:1.4rem}
+.corso-meta{display:flex;gap:1rem;flex-wrap:wrap;padding-top:1rem;border-top:1px solid rgba(196,120,154,.1);font-size:.75rem;color:var(--text-light)}
+.corso-btn{display:inline-flex;align-items:center;gap:.35rem;margin-top:1.2rem;background:transparent;border:1px solid var(--wa);color:var(--wa);padding:.5rem 1rem;border-radius:50px;font-size:.75rem;font-family:var(--font-b);font-weight:500;cursor:pointer;text-decoration:none;transition:background .3s,color .3s}
+.corso-btn:hover{background:var(--wa);color:var(--white)}
+.corso-btn svg{width:13px;height:13px;fill:currentColor}
+
+/* ORARI */
+#orari{background:var(--rose-light);padding:5rem 3rem}
+.planner{display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:2.5rem}
+.day-col{display:flex;flex-direction:column;gap:.7rem}
+.day-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-light);font-weight:500;text-align:center;padding-bottom:.5rem;border-bottom:1px solid rgba(196,120,154,.2)}
+.slot{border-radius:8px;padding:.75rem .65rem;transition:transform .2s,box-shadow .2s;border:1px solid rgba(255,255,255,.8)}
+.slot:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,.07)}
+.slot.rose{background:#FBF0F4}.slot.lav{background:var(--lav-light)}.slot.sage{background:var(--sage-light)}.slot.beige{background:#F7EFE4}.slot.white{background:#fff}
+.slot-time{font-size:.65rem;color:var(--text-light);margin-bottom:.2rem;display:block}
+.slot-name{font-size:.78rem;font-weight:500;color:var(--text);margin-bottom:.12rem;line-height:1.3}
+.slot-teacher{font-size:.68rem;color:var(--text-light);font-style:italic;font-family:var(--font-d)}
+.planner-footer{margin-top:1.8rem;padding:1.1rem 1.4rem;background:var(--white);border-radius:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.planner-footer p{font-size:.82rem;color:var(--text-mid)}
+
+/* GALLERIA */
+#galleria{background:var(--cream);padding:5rem 3rem}
+.gallery-tabs{display:flex;gap:.5rem;margin-bottom:2rem}
+.g-tab{padding:.45rem 1.3rem;border-radius:50px;font-size:.8rem;font-family:var(--font-b);cursor:pointer;border:1px solid rgba(196,120,154,.25);background:transparent;color:var(--text-mid);transition:all .25s}
+.g-tab.active,.g-tab:hover{background:var(--rose);color:var(--white);border-color:var(--rose)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:.9rem}
+.g-item{border-radius:16px;overflow:hidden;position:relative;background:var(--rose-light);transition:transform var(--t);cursor:pointer}
+.g-item:hover{transform:scale(1.02)}
+.g-item.wide{grid-column:span 2}.g-item.tall{grid-row:span 2}
+.g-item img{width:100%;height:100%;object-fit:cover}
+.g-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;opacity:.5}
+.g-ph span{font-size:.65rem;color:var(--text-mid);letter-spacing:.1em;text-transform:uppercase}
+.vid-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(45,39,48,.28);transition:background .3s}
+.g-item:hover .vid-overlay{background:rgba(45,39,48,.12)}
+.play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.g-item:hover .play-btn{transform:scale(1.1)}
+.play-btn svg{width:16px;height:16px;fill:var(--rose);margin-left:2px}
+
+/* TESTIMONIANZE */
+#testimonianze{background:var(--white);padding:5rem 3rem}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem}
+.testi-card{background:var(--rose-light);border-radius:16px;padding:1.8rem;position:relative}
+.t-quote{font-family:var(--font-d);font-size:3.5rem;line-height:1;color:#E8C9D8;position:absolute;top:1rem;left:1.4rem;font-weight:300}
+.t-stars{color:#E8B84B;font-size:.78rem;margin-bottom:.3rem}
+.t-text{font-family:var(--font-d);font-size:1rem;font-style:italic;font-weight:300;color:var(--text-mid);line-height:1.8;margin-top:2rem;margin-bottom:1.4rem}
+.t-author{display:flex;align-items:center;gap:.8rem}
+.t-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:500;color:var(--white);background:var(--rose);flex-shrink:0}
+.t-info strong{display:block;font-size:.82rem;font-weight:500}
+.t-info span{font-size:.72rem;color:var(--text-light)}
+
+/* RATING */
+#rating{background:var(--text);padding:3.5rem 3rem}
+.rating-inner{display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap}
+.rating-intro{flex-basis:100%;text-align:center;margin-bottom:.5rem}
+.rating-intro p{font-family:var(--font-d);font-size:1.1rem;font-style:italic;color:rgba(250,248,245,.5)}
+.r-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:1.4rem 2rem;display:flex;align-items:center;gap:1.2rem;min-width:220px}
+.r-logo{font-size:.9rem;font-weight:500;color:var(--cream);line-height:1.1}
+.r-logo small{display:block;font-size:.65rem;font-weight:300;opacity:.5;letter-spacing:.1em;text-transform:uppercase}
+.r-score{text-align:right;margin-left:auto}
+.r-num{font-family:var(--font-d);font-size:2.2rem;font-weight:300;color:var(--cream);line-height:1;display:block}
+.r-stars{color:#E8B84B;font-size:.8rem}
+.r-count{font-size:.68rem;color:rgba(250,248,245,.35);display:block;margin-top:2px}
+
+/* CONTATTI */
+#contatti{background:var(--rose-light);padding:5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.info-rows{margin-top:2rem;display:flex;flex-direction:column;gap:1.3rem}
+.info-row{display:flex;align-items:flex-start;gap:.9rem}
+.info-icon{width:38px;height:38px;border-radius:10px;background:var(--white);border:1px solid var(--rose-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.info-icon svg{width:16px;height:16px;stroke:var(--rose);stroke-width:1.5;fill:none}
+.info-label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:.15rem}
+.info-value{font-size:.88rem;color:var(--text)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem}
+.fg label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-light)}
+.fg input,.fg select,.fg textarea{background:var(--white);border:1px solid rgba(196,120,154,.2);border-radius:8px;padding:.7rem .9rem;font-family:var(--font-b);font-size:.86rem;color:var(--text);outline:none;transition:border-color .3s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--rose)}
+.fg textarea{resize:vertical;min-height:95px}
+.form-btns{display:flex;gap:1rem;margin-top:1.4rem;flex-wrap:wrap}
+.btn-send{background:var(--rose);color:var(--white);padding:.8rem 1.8rem;border-radius:50px;font-size:.83rem;font-weight:500;border:none;cursor:pointer;transition:background var(--t),transform .2s}
+.btn-send:hover{background:var(--rose-dark);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.f-brand{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,248,245,.4)}
+.f-copy{font-size:.7rem;color:rgba(250,248,245,.25)}
+.f-social{display:flex;gap:.6rem}
+.f-social a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s}
+.f-social a:hover{background:var(--rose)}
+.f-social svg{width:14px;height:14px;stroke:rgba(250,248,245,.7);stroke-width:1.5;fill:none}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(2){transition-delay:.1s}.fade-up:nth-child(3){transition-delay:.2s}.fade-up:nth-child(4){transition-delay:.3s}.fade-up:nth-child(5){transition-delay:.4s}.fade-up:nth-child(6){transition-delay:.5s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  #hero{grid-template-columns:1fr}
+  .hero-right{height:320px}
+  .hero-left{padding:3rem 1.5rem}
+  #intro{grid-template-columns:1fr;padding:3.5rem 1.5rem;gap:2rem}
+  .corsi-grid{grid-template-columns:1fr 1fr}
+  #corsi{padding:3.5rem 1.5rem}
+  .planner{grid-template-columns:repeat(3,1fr)}
+  #orari{padding:3.5rem 1.5rem}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  #galleria{padding:3.5rem 1.5rem}
+  .testi-grid{grid-template-columns:1fr}
+  #testimonianze{padding:3.5rem 1.5rem}
+  #rating{padding:2.5rem 1.5rem}
+  .rating-inner{gap:1.5rem}
+  #contatti{grid-template-columns:1fr;padding:3.5rem 1.5rem;gap:2.5rem}
+  footer{flex-direction:column;text-align:center}
+}
+@media(max-width:600px){
+  .corsi-grid{grid-template-columns:1fr}
+  .planner{grid-template-columns:repeat(2,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .g-item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV — popolata da JS -->
+<nav id="navbar">
+  <a href="#hero" class="nav-brand">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 28 28" fill="none">
+        <circle cx="14" cy="6" r="2.5" stroke="#C4789A" stroke-width="1.5"/>
+        <path d="M14 9v4M10 11c1.5 1 2.5 2 4 2s2.5-1 4-2M10 15l-2 5M18 15l2 5M12 13l-1.5 6M16 13l1.5 6" stroke="#C4789A" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-name" id="navNome">Iyengar Yoga</div>
+      <div class="nav-sub">Bari</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#intro" class="arr">La Scuola</a></li>
+      <li><a href="#corsi">Corsi</a></li>
+      <li><a href="#orari">Orari</a></li>
+      <li><a href="#galleria">Galleria</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <div class="nav-social">
+      <a id="navFb" href="#" class="soc-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a id="navIg" href="#" class="soc-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="#9B90A0" stroke="none"/></svg></a>
+      <a id="navYt" href="#" class="soc-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FAF8F5" stroke="none"/></svg></a>
+    </div>
+  </div>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <h1 class="hero-title"><span id="heroT1">Iyengar</span><br><span id="heroT2">Yoga Bari</span></h1>
+    <p class="hero-sub" id="heroSub">Un percorso di salute e consapevolezza</p>
+    <p class="hero-desc" id="heroDesc">Ritrova la tua pace interiore.</p>
+    <div class="hero-ctas">
+      <a href="#corsi" class="btn-discover" id="heroBtn">Scopri di più →</a>
+      <a id="heroWaBtn" href="#" target="_blank" class="btn-wa">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Prenota via WhatsApp
+      </a>
+    </div>
+    <div class="hero-divider"></div>
+    <p class="hero-claim" id="heroClaim"></p>
+  </div>
+  <div class="hero-right" id="heroImgWrap">
+    <div class="hero-img-placeholder">
+      <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="16" r="7" stroke="#C4789A" stroke-width="2"/><path d="M40 24v14M30 30c4 3 7 5 10 5s6-2 10-5M28 42l-4 14M52 42l4 14M36 37l-4 18M44 37l4 18" stroke="#C4789A" stroke-width="2" stroke-linecap="round"/></svg>
+      <p>Carica una foto<br>dal pannello admin</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="intro-img fade-up" id="introImgWrap">
+    <div class="intro-img-placeholder">
+      <svg viewBox="0 0 56 56" fill="none" stroke="#C4789A" stroke-width="1.5"><rect x="4" y="4" width="48" height="48" rx="8"/><circle cx="20" cy="20" r="5"/><polyline points="52 36 38 24 24 36 16 28 4 36"/></svg>
+      <span>Foto disciplina</span>
+    </div>
+  </div>
+  <div class="intro-content fade-up">
+    <span class="sec-label">La nostra filosofia</span>
+    <h2 class="sec-title"><span id="introT1">Ritrova la tua</span><br><em id="introT2">pace interiore</em></h2>
+    <p id="introPara1"></p>
+    <p id="introPara2"></p>
+    <div class="intro-cta">
+      <a id="introBtnWa" href="#" target="_blank" class="btn-wa-body">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <span id="introBtnTxt">Prenota la tua prima lezione</span>
+      </a>
+      <span class="book-note" id="introNota">Prima lezione gratuita</span>
+    </div>
+  </div>
+</section>
+
+<!-- CORSI -->
+<section id="corsi">
+  <div class="sec-head">
+    <div class="fade-up">
+      <span class="sec-label">Le Nostre Discipline</span>
+      <h2 class="sec-title">Scegli il tuo<br><em>percorso</em></h2>
+    </div>
+  </div>
+  <div class="corsi-grid" id="corsiGrid"></div>
+</section>
+
+<!-- ORARI -->
+<section id="orari">
+  <div class="fade-up">
+    <span class="sec-label">Programmazione Settimanale</span>
+    <h2 class="sec-title">I tuoi <em>orari</em></h2>
+  </div>
+  <div class="planner" id="plannerGrid"></div>
+  <div class="planner-footer fade-up">
+    <p>📌 Il programma può variare. Verifica sempre gli aggiornamenti o contattaci.</p>
+    <a id="orariWaBtn" href="#" target="_blank" class="btn-wa-body">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Prenota via WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- GALLERIA -->
+<section id="galleria">
+  <div class="fade-up" style="margin-bottom:1.5rem">
+    <span class="sec-label">Galleria</span>
+    <h2 class="sec-title">Vivi l'<em>atmosfera</em></h2>
+  </div>
+  <div class="gallery-tabs fade-up">
+    <button class="g-tab active" onclick="filterGallery('all',this)">Tutto</button>
+    <button class="g-tab" onclick="filterGallery('photo',this)">Foto</button>
+    <button class="g-tab" onclick="filterGallery('video',this)">Video</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section id="testimonianze">
+  <div class="fade-up">
+    <span class="sec-label">Cosa dicono di noi</span>
+    <h2 class="sec-title">Voci dei<br><em>nostri allievi</em></h2>
+  </div>
+  <div class="testi-grid" id="testiGrid"></div>
+</section>
+
+<!-- RATING -->
+<section id="rating">
+  <div class="rating-inner" id="ratingInner">
+    <div class="rating-intro"><p>Riconosciuti e apprezzati sui principali portali</p></div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="fade-up">
+    <span class="sec-label">Contattaci</span>
+    <h2 class="sec-title">Inizia il tuo<br><em>viaggio</em></h2>
+    <p style="font-size:.92rem;color:var(--text-mid);line-height:1.8;max-width:420px;margin-top:.8rem">Hai domande o vuoi provare una lezione? Scrivici — risponderemo entro poche ore.</p>
+    <div class="info-rows" id="infoRows"></div>
+  </div>
+  <div class="fade-up" style="padding-top:2.5rem">
+    <div class="form-row">
+      <div class="fg"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="nome@email.it"></div>
+    </div>
+    <div class="fg"><label>Corso di interesse</label>
+      <select id="corsoSelect"><option value="">Seleziona una disciplina</option></select>
+    </div>
+    <div class="fg"><label>Messaggio</label><textarea placeholder="Scrivi qui la tua richiesta..."></textarea></div>
+    <div class="form-btns">
+      <a id="contattoWaBtn" href="#" target="_blank" class="btn-wa-body">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Scrivici su WhatsApp
+      </a>
+      <button class="btn-send" onclick="alert('Messaggio inviato! Ti risponderemo presto.')">Invia messaggio</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand" id="footerNome">Iyengar Yoga Bari</div>
+  <p class="f-copy" id="footerCopy">© 2025 Iyengar Yoga Bari</p>
+  <div class="f-social">
+    <a id="footFb" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a id="footIg" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+    <a id="footYt" href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="rgba(250,248,245,.7)" stroke="none"/></svg></a>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════
+   CARICA JSON E POPOLA IL SITO
+   I file JSON si trovano in _data/ e vengono
+   aggiornati da Decap CMS (admin/index.html)
+═══════════════════════════════════════════════ */
+
+const WA_ICON = `<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>`;
+
+async function fetchJSON(path){
+  try{ const r=await fetch(path+'?t='+Date.now()); return await r.json(); }
+  catch(e){ return null; }
+}
+
+function waLink(num,msg){ return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`; }
+
+function setWaButtons(num){
+  const msg='Ciao! Vorrei prenotare una lezione';
+  ['heroWaBtn','introBtnWa','orariWaBtn','contattoWaBtn'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.href=waLink(num,msg);
+  });
+}
+
+async function init(){
+  // GENERALE
+  const g=await fetchJSON('_data/generale.json');
+  if(g){
+    document.title=g.nome_studio||'Iyengar Yoga Bari';
+    document.getElementById('siteTitle').textContent=g.nome_studio;
+    document.getElementById('navNome').textContent=g.nome_studio;
+    document.getElementById('footerNome').textContent=g.nome_studio;
+    document.getElementById('footerCopy').textContent=`© ${new Date().getFullYear()} ${g.nome_studio} · ${g.piva||''}`;
+    setWaButtons(g.whatsapp||'393400000000');
+    ['navFb','footFb'].forEach(id=>{ const el=document.getElementById(id); if(el&&g.social_fb&&g.social_fb!=='#') el.href=g.social_fb; });
+    ['navIg','footIg'].forEach(id=>{ const el=document.getElementById(id); if(el&&g.social_ig&&g.social_ig!=='#') el.href=g.social_ig; });
+    ['navYt','footYt'].forEach(id=>{ const el=document.getElementById(id); if(el&&g.social_yt&&g.social_yt!=='#') el.href=g.social_yt; });
+    // info contatti
+    document.getElementById('infoRows').innerHTML=`
+      <div class="info-row"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="info-label">Indirizzo</div><div class="info-value">${g.indirizzo||''}</div></div></div>
+      <div class="info-row"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.55a16 16 0 0 0 6.07 5.6h.01l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="info-label">Telefono</div><div class="info-value">+${(g.whatsapp||'').replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/,'$1 $2 $3 $4')}</div></div></div>
+      <div class="info-row"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="info-label">Email</div><div class="info-value">${g.email||''}</div></div></div>
+      <div class="info-row"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="info-label">Orari</div><div class="info-value">${g.orari_apertura||''}</div></div></div>`;
+  }
+
+  // HERO
+  const h=await fetchJSON('_data/hero.json');
+  if(h){
+    document.getElementById('heroT1').textContent=h.titolo1||'';
+    document.getElementById('heroT2').textContent=h.titolo2||'';
+    document.getElementById('heroSub').textContent=h.sub||'';
+    document.getElementById('heroDesc').textContent=h.descrizione||'';
+    document.getElementById('heroClaim').textContent=h.citazione||'';
+    document.getElementById('heroBtn').textContent=h.btn_testo||'Scopri di più →';
+    if(h.foto_hero && h.foto_hero!='/assets/img/hero.jpg'){
+      document.getElementById('heroImgWrap').innerHTML=`<img src="${h.foto_hero}" alt="${h.foto_hero_alt||'Yoga'}">`;
+    }
+  }
+
+  // INTRO
+  const i=await fetchJSON('_data/intro.json');
+  if(i){
+    document.getElementById('introT1').textContent=i.titolo1||'';
+    document.getElementById('introT2').textContent=i.titolo2||'';
+    document.getElementById('introPara1').textContent=i.para1||'';
+    document.getElementById('introPara2').textContent=i.para2||'';
+    document.getElementById('introBtnTxt').textContent=i.btn_wa||'Prenota';
+    document.getElementById('introNota').textContent=i.nota||'';
+    if(i.foto_disciplina && i.foto_disciplina!='/assets/img/disciplina.jpg'){
+      document.getElementById('introImgWrap').innerHTML=`<img src="${i.foto_disciplina}" alt="Yoga">`;
+    }
+    if(g) document.getElementById('introBtnWa').href=waLink(g.whatsapp||'',i.btn_wa||'Prenota');
+  }
+
+  // CORSI
+  const c=await fetchJSON('_data/corsi.json');
+  if(c&&c.lista){
+    const grid=document.getElementById('corsiGrid');
+    const sel=document.getElementById('corsoSelect');
+    grid.innerHTML='';
+    sel.innerHTML='<option value="">Seleziona una disciplina</option>';
+    c.lista.forEach(co=>{
+      const wa=g?waLink(g.whatsapp||'',`Ciao! Vorrei prenotare ${co.nome}`):'#';
+      grid.innerHTML+=`<div class="corso-card fade-up">
+        <span class="corso-emoji">${co.emoji||'🌿'}</span>
+        <div class="corso-name">${co.nome}</div>
+        <span class="corso-level">${co.livello}</span>
+        <p class="corso-desc">${co.descrizione}</p>
+        <div class="corso-meta"><span>⏱ ${co.durata}</span><span>👥 Max ${co.max}</span></div>
+        <a href="${wa}" target="_blank" class="corso-btn">${WA_ICON} Prenota</a>
+      </div>`;
+      sel.innerHTML+=`<option>${co.nome}</option>`;
+    });
+    reObserve();
+  }
+
+  // ORARI
+  const o=await fetchJSON('_data/orari.json');
+  if(o&&o.lista){
+    const giorni=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+    const grid=document.getElementById('plannerGrid');
+    const grouped={};
+    giorni.forEach(g2=>{ grouped[g2]=[]; });
+    o.lista.forEach(l=>{ if(grouped[l.giorno]) grouped[l.giorno].push(l); });
+    grid.innerHTML='';
+    let rendered=0;
+    giorni.forEach(giorno=>{
+      if(!grouped[giorno]||!grouped[giorno].length) return;
+      if(rendered>=6) return;
+      rendered++;
+      let slots=grouped[giorno].map(l=>`<div class="slot ${l.colore||'white'} fade-up"><span class="slot-time">${l.ora}</span><div class="slot-name">${l.corso}</div><div class="slot-teacher">con ${l.insegnante}</div></div>`).join('');
+      grid.innerHTML+=`<div class="day-col"><div class="day-label">${giorno}</div>${slots}</div>`;
+    });
+    reObserve();
+  }
+
+  // GALLERIA
+  const gal=await fetchJSON('_data/galleria.json');
+  const gallGrid=document.getElementById('galleryGrid');
+  gallGrid.innerHTML='';
+  if(gal){
+    (gal.foto||[]).forEach((f,idx)=>{
+      const cls=f.size==='wide'?'wide':f.size==='tall'?'tall':'';
+      gallGrid.innerHTML+=`<div class="g-item ${cls}" data-type="photo"><img src="${f.src}" alt="${f.label||'Foto '+(idx+1)}"></div>`;
+    });
+    (gal.video||[]).forEach(v=>{
+      const yt=v.url.replace('watch?v=','embed/').replace('youtu.be/','youtube.com/embed/');
+      gallGrid.innerHTML+=`<div class="g-item" data-type="video">
+        <div class="g-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9B90A0" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span>${v.titolo||'Video'}</span></div>
+        <div class="vid-overlay" onclick="openVideo('${yt}')"><div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>
+      </div>`;
+    });
+  }
+  if(!gallGrid.children.length){
+    gallGrid.innerHTML=`<div class="g-item wide"><div class="g-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9B90A0" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Carica foto dal pannello admin</span></div></div>`;
+  }
+
+  // TESTIMONIANZE
+  const t=await fetchJSON('_data/testimonianze.json');
+  if(t&&t.lista){
+    const colors=['var(--rose)','#8B7EC8','var(--sage)'];
+    document.getElementById('testiGrid').innerHTML=t.lista.map((ti,idx)=>`
+      <div class="testi-card fade-up">
+        <div class="t-quote">"</div>
+        <div class="t-stars">${'★'.repeat(parseInt(ti.stelle)||5)}</div>
+        <p class="t-text">${ti.testo}</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:${colors[idx%colors.length]}">${ti.iniziali}</div>
+          <div class="t-info"><strong>${ti.nome}</strong><span>${ti.ruolo}</span></div>
+        </div>
+      </div>`).join('');
+    reObserve();
+  }
+
+  // RATING
+  const r=await fetchJSON('_data/rating.json');
+  if(r&&r.lista){
+    const inner=document.getElementById('ratingInner');
+    r.lista.forEach(rt=>{
+      inner.innerHTML+=`<div class="r-card fade-up">
+        <div class="r-logo">${rt.portale}<small>${rt.sub}</small></div>
+        <div class="r-score">
+          <span class="r-num">${rt.punteggio}</span>
+          <div class="r-stars">★★★★★</div>
+          <span class="r-count">${rt.recensioni} recensioni</span>
+        </div>
+      </div>`;
+    });
+    reObserve();
+  }
+}
+
+// Scroll animations
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+},{threshold:.1});
+
+function reObserve(){
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el=>obs.observe(el));
+}
+
+// Gallery filter
+function filterGallery(type,btn){
+  document.querySelectorAll('.g-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.g-item').forEach(item=>{
+    item.style.display=(type==='all'||item.dataset.type===type)?'block':'none';
+  });
+}
+
+// Video lightbox
+function openVideo(url){
+  const overlay=document.createElement('div');
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999;display:flex;align-items:center;justify-content:center;cursor:pointer';
+  overlay.innerHTML=`<iframe width="800" height="450" src="${url}?autoplay=1" frameborder="0" allowfullscreen style="border-radius:12px;max-width:95vw;max-height:70vh"></iframe>`;
+  overlay.onclick=()=>document.body.removeChild(overlay);
+  document.body.appendChild(overlay);
+}
+
+// Navbar shadow
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').style.boxShadow=window.scrollY>40?'0 2px 20px rgba(196,120,154,.1)':'none';
+});
+
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+init();
+</script>
+</body>
+</html>
