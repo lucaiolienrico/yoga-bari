@@ -1,13 +1,13 @@
 {
-  "nome_studio": "Iyengar Yoga Bari",
-  "slogan": "Un percorso di salute e consapevolezza",
   "url_sito": "https://ilfenicottero.netlify.app",
-  "whatsapp": "393401234567",
-  "email": "info@iyengaryogabari.it",
-  "indirizzo": "Via Roma, 42 — Bari, BA 70121",
-  "orari_apertura": "Lun–Ven 07:00–22:00 · Sab 08:00–14:00",
   "piva": "P.IVA 00000000000",
+  "social_yt": "#",
+  "indirizzo": "Corso Sonnino 148 — Bari, BA 70121",
   "social_fb": "#",
   "social_ig": "#",
-  "social_yt": "#"
+  "whatsapp": "393401234567",
+  "orari_apertura": "Lun–Ven 07:00–22:00 · Sab 08:00–14:00",
+  "nome_studio": "Il fenicottero ASD",
+  "email": "info@ilfenicottero.it",
+  "slogan": "Un percorso di salute e consapevolezza"
 }
