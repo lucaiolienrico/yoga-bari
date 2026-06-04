@@ -1,20 +1,26 @@
 [build]
-  # Nessun comando di build necessario per sito HTML puro
   publish = "."
 
-# Abilita Netlify Identity per login admin
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-
-# Header sicurezza
-[[headers]]
-  for = "/admin/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-
-# Redirect per SPA admin
+# Redirect SPA — necessario per far funzionare /admin
 [[redirects]]
   from = "/admin"
   to = "/admin/index.html"
   status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Catch-all per SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Header sicurezza
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
