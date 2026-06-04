@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: lucaiolienrico/yoga-bari        # ← CAMBIA: tuonomeutente/nome-repo
+  name: git-gateway
   branch: main
 
 media_folder: "assets/img"            # dove si salvano le foto caricate
