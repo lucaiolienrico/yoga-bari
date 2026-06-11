@@ -1,17 +1,17 @@
 [build]
   publish = "."
 
+# /admin (senza slash) -> serve l'index del CMS.
+# REWRITE 200 (non redirect): nessun 3xx coinvolto = nessun loop possibile.
+# La config viene caricata via path assoluto nell'admin/index.html.
 [[redirects]]
   from = "/admin"
-  to = "/admin/"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/admin/"
   to = "/admin/index.html"
   status = 200
 
+# SPA fallback. NESSUN force: i file statici reali
+# (admin/index.html, admin/config.yml, *.json, assets/img/*)
+# hanno precedenza e i rewrite 200 vengono saltati se il file esiste.
 [[redirects]]
   from = "/*"
   to = "/index.html"
