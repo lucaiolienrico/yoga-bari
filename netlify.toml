@@ -2,10 +2,12 @@
   publish = "."
 
 # Admin panel — DEVE stare PRIMA del catch-all
+# /admin -> 301 verso /admin/ : il browser AGGIORNA l'URL (con slash finale).
+# Cosi la risoluzione relativa di config.yml punta a /admin/config.yml.
 [[redirects]]
   from = "/admin"
-  to = "/admin/index.html"
-  status = 200
+  to = "/admin/"
+  status = 301
   force = true
 
 [[redirects]]
