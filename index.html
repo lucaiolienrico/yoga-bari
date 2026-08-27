@@ -215,19 +215,6 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
   .g-item.wide{grid-column:span 1}
 }
 </style>
-  <!-- Netlify Identity — redirect post-login admin -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-  </script>
 </head>
 <body>
 
@@ -613,3 +600,4 @@ init();
 </script>
 </body>
 </html>
+

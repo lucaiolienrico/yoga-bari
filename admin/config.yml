@@ -1,14 +1,17 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: lucaiolienrico/yoga-bari
   branch: main
+  base_url: https://yoga-bari-oauth.lucaiolienrico.workers.dev
+  auth_endpoint: /auth
 
-site_url: https://ilfenicottero.netlify.app
-display_url: https://ilfenicottero.netlify.app
+site_url: https://yoga-bari.pages.dev
+display_url: https://yoga-bari.pages.dev
 
-media_folder: "assets/img"            # dove si salvano le foto caricate
+media_folder: "assets/img"
 public_folder: "/assets/img"
 
-locale: it                             # interfaccia in italiano
+locale: it
 
 collections:
 
@@ -25,6 +28,7 @@ collections:
         fields:
           - { label: "Nome Studio", name: "nome_studio", widget: "string", default: "Iyengar Yoga Bari" }
           - { label: "Slogan / Sottotitolo", name: "slogan", widget: "string" }
+          - { label: "URL Sito", name: "url_sito", widget: "string", required: false }
           - { label: "📞 Numero WhatsApp", name: "whatsapp", widget: "string", hint: "Formato internazionale senza +: es. 393401234567" }
           - { label: "📧 Email", name: "email", widget: "string" }
           - { label: "📍 Indirizzo", name: "indirizzo", widget: "string" }

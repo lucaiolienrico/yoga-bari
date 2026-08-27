@@ -1,0 +1,7 @@
+name = "yoga-bari-oauth"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# Secrets sono impostati via: wrangler secret put GITHUB_CLIENT_ID
+# Non mettere valori reali qui
