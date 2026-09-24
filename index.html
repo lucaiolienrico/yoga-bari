@@ -234,11 +234,11 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
   </a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#intro" class="arr">La Scuola</a></li>
-      <li><a href="#corsi">Corsi</a></li>
-      <li><a href="#orari">Orari</a></li>
-      <li><a href="#galleria">Galleria</a></li>
-      <li><a href="#contatti">Contatti</a></li>
+      <li><a href="#intro" class="arr"><span id="navScuola">La Scuola</span></a></li>
+      <li><a href="#corsi"><span id="navCorsiLbl">Corsi</span></a></li>
+      <li><a href="#orari"><span id="navOrariLbl">Orari</span></a></li>
+      <li><a href="#galleria"><span id="navGalleriaLbl">Galleria</span></a></li>
+      <li><a href="#contatti"><span id="navContattiLbl">Contatti</span></a></li>
     </ul>
     <div class="nav-social">
       <a id="navFb" href="#" class="soc-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -300,8 +300,8 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 <section id="corsi">
   <div class="sec-head">
     <div class="fade-up">
-      <span class="sec-label">Le Nostre Discipline</span>
-      <h2 class="sec-title">Scegli il tuo<br><em>percorso</em></h2>
+      <span class="sec-label" id="corsiLabel">Le Nostre Discipline</span>
+      <h2 class="sec-title"><span id="corsiT1">Scegli il tuo</span><br><em id="corsiT2">percorso</em></h2>
     </div>
   </div>
   <div class="corsi-grid" id="corsiGrid"></div>
@@ -310,8 +310,8 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 <!-- ORARI -->
 <section id="orari">
   <div class="fade-up">
-    <span class="sec-label">Programmazione Settimanale</span>
-    <h2 class="sec-title">I tuoi <em>orari</em></h2>
+    <span class="sec-label" id="orariLabel">Programmazione Settimanale</span>
+    <h2 class="sec-title"><span id="orariT1">I tuoi</span> <em id="orariT2">orari</em></h2>
   </div>
   <div class="planner" id="plannerGrid"></div>
   <div class="planner-footer fade-up">
@@ -326,8 +326,8 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 <!-- GALLERIA -->
 <section id="galleria">
   <div class="fade-up" style="margin-bottom:1.5rem">
-    <span class="sec-label">Galleria</span>
-    <h2 class="sec-title">Vivi l'<em>atmosfera</em></h2>
+    <span class="sec-label" id="galleriaLabel">Galleria</span>
+    <h2 class="sec-title"><span id="galleriaT1">Vivi l'</span><em id="galleriaT2">atmosfera</em></h2>
   </div>
   <div class="gallery-tabs fade-up">
     <button class="g-tab active" onclick="filterGallery('all',this)">Tutto</button>
@@ -340,8 +340,8 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 <!-- TESTIMONIANZE -->
 <section id="testimonianze">
   <div class="fade-up">
-    <span class="sec-label">Cosa dicono di noi</span>
-    <h2 class="sec-title">Voci dei<br><em>nostri allievi</em></h2>
+    <span class="sec-label" id="testiLabel">Cosa dicono di noi</span>
+    <h2 class="sec-title"><span id="testiT1">Voci dei</span><br><em id="testiT2">nostri allievi</em></h2>
   </div>
   <div class="testi-grid" id="testiGrid"></div>
 </section>
@@ -349,33 +349,33 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 <!-- RATING -->
 <section id="rating">
   <div class="rating-inner" id="ratingInner">
-    <div class="rating-intro"><p>Riconosciuti e apprezzati sui principali portali</p></div>
+    <div class="rating-intro"><p id="ratingTesto">Riconosciuti e apprezzati sui principali portali</p></div>
   </div>
 </section>
 
 <!-- CONTATTI -->
 <section id="contatti">
   <div class="fade-up">
-    <span class="sec-label">Contattaci</span>
-    <h2 class="sec-title">Inizia il tuo<br><em>viaggio</em></h2>
-    <p style="font-size:.92rem;color:var(--text-mid);line-height:1.8;max-width:420px;margin-top:.8rem">Hai domande o vuoi provare una lezione? Scrivici — risponderemo entro poche ore.</p>
+    <span class="sec-label" id="contattiLabel">Contattaci</span>
+    <h2 class="sec-title"><span id="contattiT1">Inizia il tuo</span><br><em id="contattiT2">viaggio</em></h2>
+    <p id="contattiTesto" style="font-size:.92rem;color:var(--text-mid);line-height:1.8;max-width:420px;margin-top:.8rem">Hai domande o vuoi provare una lezione? Scrivici — risponderemo entro poche ore.</p>
     <div class="info-rows" id="infoRows"></div>
   </div>
   <div class="fade-up" style="padding-top:2.5rem">
     <div class="form-row">
-      <div class="fg"><label>Nome</label><input type="text" placeholder="Il tuo nome"></div>
-      <div class="fg"><label>Email</label><input type="email" placeholder="nome@email.it"></div>
+      <div class="fg"><label>Nome</label><input type="text" id="formNome" placeholder="Il tuo nome"></div>
+      <div class="fg"><label>Email</label><input type="email" id="formEmail" placeholder="nome@email.it"></div>
     </div>
     <div class="fg"><label>Corso di interesse</label>
       <select id="corsoSelect"><option value="">Seleziona una disciplina</option></select>
     </div>
-    <div class="fg"><label>Messaggio</label><textarea placeholder="Scrivi qui la tua richiesta..."></textarea></div>
+    <div class="fg"><label>Messaggio</label><textarea id="formMsg" placeholder="Scrivi qui la tua richiesta..."></textarea></div>
     <div class="form-btns">
       <a id="contattoWaBtn" href="#" target="_blank" class="btn-wa-body">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
         Scrivici su WhatsApp
       </a>
-      <button class="btn-send" onclick="alert('Messaggio inviato! Ti risponderemo presto.')">Invia messaggio</button>
+      <button class="btn-send" onclick="inviaForm()">Invia messaggio</button>
     </div>
   </div>
 </section>
@@ -399,6 +399,18 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 ═══════════════════════════════════════════════ */
 
 const WA_ICON = `<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.124 1.532 5.858L.057 23.786a.5.5 0 0 0 .613.638l6.102-1.591A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.959 0-3.809-.525-5.4-1.442l-.387-.229-4.01 1.046 1.005-3.889-.253-.404A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>`;
+
+let WA_NUM='';
+
+function applyVisibility(sectionId,visible){
+  const el=document.getElementById(sectionId);
+  if(el) el.style.display=(visible===false)?'none':'';
+}
+
+function setText(id,val){
+  const el=document.getElementById(id);
+  if(el&&val!=null&&val!=='') el.textContent=val;
+}
 
 async function fetchJSON(path){
   try{ const r=await fetch(path+'?t='+Date.now()); return await r.json(); }
@@ -425,6 +437,12 @@ async function init(){
     document.getElementById('footerNome').textContent=g.nome_studio;
     document.getElementById('footerCopy').textContent=`© ${new Date().getFullYear()} ${g.nome_studio} · ${g.piva||''}`;
     setWaButtons(g.whatsapp||'393400000000');
+    WA_NUM=g.whatsapp||'';
+    setText('navScuola',g.nav_scuola);
+    setText('navCorsiLbl',g.nav_corsi);
+    setText('navOrariLbl',g.nav_orari);
+    setText('navGalleriaLbl',g.nav_galleria);
+    setText('navContattiLbl',g.nav_contatti);
     ['navFb','footFb'].forEach(id=>{ const el=document.getElementById(id); if(el&&g.social_fb&&g.social_fb!=='#') el.href=g.social_fb; });
     ['navIg','footIg'].forEach(id=>{ const el=document.getElementById(id); if(el&&g.social_ig&&g.social_ig!=='#') el.href=g.social_ig; });
     ['navYt','footYt'].forEach(id=>{ const el=document.getElementById(id); if(el&&g.social_yt&&g.social_yt!=='#') el.href=g.social_yt; });
@@ -467,6 +485,12 @@ async function init(){
 
   // CORSI
   const c=await fetchJSON('corsi.json');
+  if(c){
+    applyVisibility('corsi',c.visibile);
+    setText('corsiLabel',c.sec_label);
+    setText('corsiT1',c.titolo1);
+    setText('corsiT2',c.titolo2);
+  }
   if(c&&c.lista){
     const grid=document.getElementById('corsiGrid');
     const sel=document.getElementById('corsoSelect');
@@ -489,6 +513,12 @@ async function init(){
 
   // ORARI
   const o=await fetchJSON('orari.json');
+  if(o){
+    applyVisibility('orari',o.visibile);
+    setText('orariLabel',o.sec_label);
+    setText('orariT1',o.titolo1);
+    setText('orariT2',o.titolo2);
+  }
   if(o&&o.lista){
     const giorni=['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
     const grid=document.getElementById('plannerGrid');
@@ -512,6 +542,10 @@ async function init(){
   const gallGrid=document.getElementById('galleryGrid');
   gallGrid.innerHTML='';
   if(gal){
+    applyVisibility('galleria',gal.visibile);
+    setText('galleriaLabel',gal.sec_label);
+    setText('galleriaT1',gal.titolo1);
+    setText('galleriaT2',gal.titolo2);
     (gal.foto||[]).forEach((f,idx)=>{
       const cls=f.size==='wide'?'wide':f.size==='tall'?'tall':'';
       gallGrid.innerHTML+=`<div class="g-item ${cls}" data-type="photo"><img src="${f.src}" alt="${f.label||'Foto '+(idx+1)}"></div>`;
@@ -530,6 +564,12 @@ async function init(){
 
   // TESTIMONIANZE
   const t=await fetchJSON('testimonianze.json');
+  if(t){
+    applyVisibility('testimonianze',t.visibile);
+    setText('testiLabel',t.sec_label);
+    setText('testiT1',t.titolo1);
+    setText('testiT2',t.titolo2);
+  }
   if(t&&t.lista){
     const colors=['var(--rose)','#8B7EC8','var(--sage)'];
     document.getElementById('testiGrid').innerHTML=t.lista.map((ti,idx)=>`
@@ -547,6 +587,10 @@ async function init(){
 
   // RATING
   const r=await fetchJSON('rating.json');
+  if(r){
+    applyVisibility('rating',r.visibile);
+    setText('ratingTesto',r.testo);
+  }
   if(r&&r.lista){
     const inner=document.getElementById('ratingInner');
     r.lista.forEach(rt=>{
@@ -560,6 +604,16 @@ async function init(){
       </div>`;
     });
     reObserve();
+  }
+
+  // CONTATTI
+  const ct=await fetchJSON('contatti.json');
+  if(ct){
+    applyVisibility('contatti',ct.visibile);
+    setText('contattiLabel',ct.sec_label);
+    setText('contattiT1',ct.titolo1);
+    setText('contattiT2',ct.titolo2);
+    setText('contattiTesto',ct.testo);
   }
 }
 
@@ -579,6 +633,20 @@ function filterGallery(type,btn){
   document.querySelectorAll('.g-item').forEach(item=>{
     item.style.display=(type==='all'||item.dataset.type===type)?'block':'none';
   });
+}
+
+// Form contatti — invio reale via WhatsApp precompilato
+function inviaForm(){
+  const nome=(document.getElementById('formNome').value||'').trim();
+  const email=(document.getElementById('formEmail').value||'').trim();
+  const corso=document.getElementById('corsoSelect').value;
+  const msg=(document.getElementById('formMsg').value||'').trim();
+  if(!nome||!msg){ alert('Inserisci almeno nome e messaggio.'); return; }
+  let testo=`Ciao! Sono ${nome}.`;
+  if(corso) testo+=` Sono interessato/a a: ${corso}.`;
+  testo+=` ${msg}`;
+  if(email) testo+=` (Email: ${email})`;
+  window.open(waLink(WA_NUM,testo),'_blank');
 }
 
 // Video lightbox

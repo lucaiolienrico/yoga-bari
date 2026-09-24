@@ -1,5 +1,5 @@
 {
-  "url_sito": "https://ilfenicottero.netlify.app",
+  "url_sito": "https://yoga-bari.pages.dev",
   "piva": "P.IVA 0000000000",
   "social_yt": "#",
   "indirizzo": "Corso Sonnino 148 — Bari, BA 70121",
@@ -9,5 +9,10 @@
   "orari_apertura": "Lun–Ven 07:00–22:00 · Sab 08:00–14:00",
   "nome_studio": "Il fenicottero ASD",
   "email": "info@ilfenicottero.it",
-  "slogan": "Un percorso di salute e consapevolezza"
+  "slogan": "Un percorso di salute e consapevolezza",
+  "nav_scuola": "La Scuola",
+  "nav_corsi": "Corsi",
+  "nav_orari": "Orari",
+  "nav_galleria": "Galleria",
+  "nav_contatti": "Contatti"
 }

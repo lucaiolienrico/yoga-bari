@@ -1,4 +1,8 @@
 {
+  "sec_label": "Le Nostre Discipline",
+  "titolo1": "Scegli il tuo",
+  "titolo2": "percorso",
+  "visibile": true,
   "lista": [
     { "emoji": "🌿", "nome": "Hatha Yoga", "livello": "Tutti i livelli", "durata": "60 min", "max": "12", "descrizione": "Posture statiche, respiro consapevole e meditazione per un'armonia profonda tra corpo e mente." },
     { "emoji": "🌊", "nome": "Vinyasa Flow", "livello": "Intermedio", "durata": "75 min", "max": "10", "descrizione": "Sequenze dinamiche sincronizzate al respiro. Energia, fluidità e consapevolezza del movimento." },

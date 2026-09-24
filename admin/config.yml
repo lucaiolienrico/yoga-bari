@@ -37,6 +37,11 @@ collections:
           - { label: "Link Facebook", name: "social_fb", widget: "string", required: false }
           - { label: "Link Instagram", name: "social_ig", widget: "string", required: false }
           - { label: "Link YouTube", name: "social_yt", widget: "string", required: false }
+          - { label: "🧭 Menu — La Scuola", name: "nav_scuola", widget: "string", default: "La Scuola" }
+          - { label: "🧭 Menu — Corsi", name: "nav_corsi", widget: "string", default: "Corsi" }
+          - { label: "🧭 Menu — Orari", name: "nav_orari", widget: "string", default: "Orari" }
+          - { label: "🧭 Menu — Galleria", name: "nav_galleria", widget: "string", default: "Galleria" }
+          - { label: "🧭 Menu — Contatti", name: "nav_contatti", widget: "string", default: "Contatti" }
 
   # ─────────────────────────────────────────
   # 2. SEZIONE HERO
@@ -91,6 +96,10 @@ collections:
         label: "Le 6 Discipline"
         file: "corsi.json"
         fields:
+          - { label: "👁️ Mostra sezione sul sito", name: "visibile", widget: "boolean", default: true }
+          - { label: "Etichetta sopra il titolo", name: "sec_label", widget: "string", default: "Le Nostre Discipline" }
+          - { label: "Titolo (riga 1)", name: "titolo1", widget: "string", default: "Scegli il tuo" }
+          - { label: "Titolo (riga 2, corsivo)", name: "titolo2", widget: "string", default: "percorso" }
           - label: "Corsi"
             name: "lista"
             widget: "list"
@@ -116,6 +125,10 @@ collections:
         label: "Programmazione Settimanale"
         file: "orari.json"
         fields:
+          - { label: "👁️ Mostra sezione sul sito", name: "visibile", widget: "boolean", default: true }
+          - { label: "Etichetta sopra il titolo", name: "sec_label", widget: "string", default: "Programmazione Settimanale" }
+          - { label: "Titolo (riga 1)", name: "titolo1", widget: "string", default: "I tuoi" }
+          - { label: "Titolo (riga 2, corsivo)", name: "titolo2", widget: "string", default: "orari" }
           - label: "Lezioni"
             name: "lista"
             widget: "list"
@@ -146,6 +159,10 @@ collections:
         label: "Foto e Video"
         file: "galleria.json"
         fields:
+          - { label: "👁️ Mostra sezione sul sito", name: "visibile", widget: "boolean", default: true }
+          - { label: "Etichetta sopra il titolo", name: "sec_label", widget: "string", default: "Galleria" }
+          - { label: "Titolo (riga 1)", name: "titolo1", widget: "string", default: "Vivi l'" }
+          - { label: "Titolo (riga 2, corsivo)", name: "titolo2", widget: "string", default: "atmosfera" }
           - label: "Foto"
             name: "foto"
             widget: "list"
@@ -178,6 +195,10 @@ collections:
         label: "Recensioni Allievi"
         file: "testimonianze.json"
         fields:
+          - { label: "👁️ Mostra sezione sul sito", name: "visibile", widget: "boolean", default: true }
+          - { label: "Etichetta sopra il titolo", name: "sec_label", widget: "string", default: "Cosa dicono di noi" }
+          - { label: "Titolo (riga 1)", name: "titolo1", widget: "string", default: "Voci dei" }
+          - { label: "Titolo (riga 2, corsivo)", name: "titolo2", widget: "string", default: "nostri allievi" }
           - label: "Testimonianze"
             name: "lista"
             widget: "list"
@@ -202,6 +223,8 @@ collections:
         label: "Punteggi Google, Facebook ecc."
         file: "rating.json"
         fields:
+          - { label: "👁️ Mostra sezione sul sito", name: "visibile", widget: "boolean", default: true }
+          - { label: "Testo introduttivo", name: "testo", widget: "string", default: "Riconosciuti e apprezzati sui principali portali" }
           - label: "Portali"
             name: "lista"
             widget: "list"
@@ -210,3 +233,19 @@ collections:
               - { label: "Sottotitolo", name: "sub", widget: "string" }
               - { label: "Punteggio (es. 4.9)", name: "punteggio", widget: "string" }
               - { label: "Numero recensioni", name: "recensioni", widget: "string" }
+
+  # ─────────────────────────────────────────
+  # 9. CONTATTI
+  # ─────────────────────────────────────────
+  - name: "contatti"
+    label: "✉️ Contatti"
+    files:
+      - name: "contatti"
+        label: "Testi Sezione Contatti"
+        file: "contatti.json"
+        fields:
+          - { label: "👁️ Mostra sezione sul sito", name: "visibile", widget: "boolean", default: true }
+          - { label: "Etichetta sopra il titolo", name: "sec_label", widget: "string", default: "Contattaci" }
+          - { label: "Titolo (riga 1)", name: "titolo1", widget: "string", default: "Inizia il tuo" }
+          - { label: "Titolo (riga 2, corsivo)", name: "titolo2", widget: "string", default: "viaggio" }
+          - { label: "Testo descrittivo", name: "testo", widget: "text", default: "Hai domande o vuoi provare una lezione? Scrivici — risponderemo entro poche ore." }

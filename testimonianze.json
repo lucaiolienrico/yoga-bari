@@ -1,4 +1,8 @@
 {
+  "sec_label": "Cosa dicono di noi",
+  "titolo1": "Voci dei",
+  "titolo2": "nostri allievi",
+  "visibile": true,
   "lista": [
     { "nome": "Giulia M.", "ruolo": "Allieva da 2 anni", "iniziali": "GM", "stelle": "5", "testo": "Frequento da due anni e ogni lezione è un momento di vera pausa. Gli insegnanti sono preparati e attenti. Lo spazio è meraviglioso." },
     { "nome": "Marco R.", "ruolo": "Allievo da 8 mesi", "iniziali": "MR", "stelle": "5", "testo": "Ho iniziato lo Yin Yoga per problemi alla schiena. Dopo tre mesi i miglioramenti sono stati notevoli. Consiglio a tutti." },
