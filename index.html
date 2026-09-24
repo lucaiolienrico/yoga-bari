@@ -3,7 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="siteTitle">Iyengar Yoga Bari</title>
+<title id="siteTitle">Yoga a Bari | Il Fenicottero ASD — Scuola di Yoga Iyengar</title>
+<meta name="description" content="Il Fenicottero ASD — scuola di Yoga Iyengar a Bari. Corsi di Hatha, Vinyasa, Yin Yoga e Meditazione. Prenota la tua prima lezione gratuita.">
+<link rel="canonical" href="https://yoga-bari.pages.dev/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28' fill='none'%3E%3Ccircle cx='14' cy='6' r='2.5' stroke='%23C4789A' stroke-width='1.5'/%3E%3Cpath d='M14 9v4M10 11c1.5 1 2.5 2 4 2s2.5-1 4-2M10 15l-2 5M18 15l2 5M12 13l-1.5 6M16 13l1.5 6' stroke='%23C4789A' stroke-width='1.3' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Il Fenicottero ASD">
+<meta property="og:title" content="Yoga a Bari — Il Fenicottero ASD">
+<meta property="og:description" content="Scuola di Yoga Iyengar a Bari. Corsi di Hatha, Vinyasa, Yin Yoga e Meditazione. Prenota la tua prima lezione gratuita.">
+<meta property="og:url" content="https://yoga-bari.pages.dev/">
+<meta property="og:locale" content="it_IT">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yoga a Bari — Il Fenicottero ASD">
+<meta name="twitter:description" content="Scuola di Yoga Iyengar a Bari. Corsi di Hatha, Vinyasa, Yin Yoga e Meditazione.">
+
+<script type="application/ld+json" id="ldJson">
+{
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  "name": "Il fenicottero ASD",
+  "description": "Ritrova la tua pace interiore attraverso la pratica autentica dello yoga Iyengar — una disciplina che unisce precisione, respiro e profonda consapevolezza del corpo.",
+  "url": "https://yoga-bari.pages.dev",
+  "telephone": "+393401234567",
+  "email": "info@ilfenicottero.it",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Corso Sonnino 148",
+    "addressLocality": "Bari",
+    "addressRegion": "BA",
+    "postalCode": "70121",
+    "addressCountry": "IT"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -412,6 +447,42 @@ function setText(id,val){
   if(el&&val!=null&&val!=='') el.textContent=val;
 }
 
+function parseIndirizzo(str){
+  if(!str) return null;
+  const parts=str.split(' — ');
+  const street=(parts[0]||str).trim();
+  let locality='',region='',postal='';
+  if(parts[1]){
+    const m=parts[1].trim().match(/^(.+?),\s*([A-Z]{2})\s*(\d{5})?$/);
+    if(m){ locality=m[1].trim(); region=m[2]; postal=m[3]||''; }
+    else { locality=parts[1].trim(); }
+  }
+  const addr={ "@type":"PostalAddress", streetAddress:street, addressCountry:"IT" };
+  if(locality) addr.addressLocality=locality;
+  if(region) addr.addressRegion=region;
+  if(postal) addr.postalCode=postal;
+  return addr;
+}
+
+function updateLdJson(g,h){
+  const el=document.getElementById('ldJson');
+  if(!el||!g) return;
+  const social=[g.social_fb,g.social_ig,g.social_yt].filter(u=>u&&u!=='#');
+  const data={
+    "@context":"https://schema.org",
+    "@type":"ExerciseGym",
+    "name":g.nome_studio||'Il fenicottero ASD',
+    "description":(h&&h.descrizione)||'',
+    "url":g.url_sito||'https://yoga-bari.pages.dev',
+    "telephone":g.whatsapp?('+'+g.whatsapp):undefined,
+    "email":g.email||undefined,
+  };
+  const addr=parseIndirizzo(g.indirizzo);
+  if(addr) data.address=addr;
+  if(social.length) data.sameAs=social;
+  el.textContent=JSON.stringify(data,null,2);
+}
+
 async function fetchJSON(path){
   try{ const r=await fetch(path+'?t='+Date.now()); return await r.json(); }
   catch(e){ return null; }
@@ -431,8 +502,7 @@ async function init(){
   // GENERALE
   const g=await fetchJSON('generale.json');
   if(g){
-    document.title=g.nome_studio||'Iyengar Yoga Bari';
-    document.getElementById('siteTitle').textContent=g.nome_studio;
+    document.title=(g.nome_studio||'Il Fenicottero ASD')+' — Scuola di Yoga a Bari';
     document.getElementById('navNome').textContent=g.nome_studio;
     document.getElementById('footerNome').textContent=g.nome_studio;
     document.getElementById('footerCopy').textContent=`© ${new Date().getFullYear()} ${g.nome_studio} · ${g.piva||''}`;
@@ -467,6 +537,7 @@ async function init(){
       document.getElementById('heroImgWrap').innerHTML=`<img src="${h.foto_hero}" alt="${h.foto_hero_alt||'Yoga'}">`;
     }
   }
+  if(g) updateLdJson(g,h);
 
   // INTRO
   const i=await fetchJSON('intro.json');
