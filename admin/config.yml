@@ -62,7 +62,7 @@ collections:
           - label: "📸 Foto Hero (lato destro)"
             name: foto_hero
             widget: image
-            hint: "Immagine verticale consigliata. Dimensioni consigliate: 800x1000px"
+            hint: "Immagine verticale consigliata. Dimensioni consigliate: 800x1000px. Peso ideale: sotto 300-400 KB (JPG o WebP) — foto troppo pesanti rallentano il caricamento del sito"
           - { label: "Testo alternativo foto", name: "foto_hero_alt", widget: "string", default: "Yoga Bari" }
 
   # ─────────────────────────────────────────
@@ -84,7 +84,7 @@ collections:
           - label: "📸 Foto Disciplina"
             name: foto_disciplina
             widget: image
-            hint: "Foto verticale 4:5. Es: posa yoga, classe, insegnante"
+            hint: "Foto verticale 4:5. Es: posa yoga, classe, insegnante. Peso ideale: sotto 300-400 KB (JPG o WebP)"
 
   # ─────────────────────────────────────────
   # 4. CORSI
@@ -170,6 +170,7 @@ collections:
               - label: "Foto"
                 name: src
                 widget: image
+                hint: "Peso ideale: sotto 300-400 KB (JPG o WebP) — la galleria carica più foto insieme, quelle pesanti rallentano il sito"
               - { label: "Didascalia", name: "label", widget: "string", required: false }
               - label: "Dimensione"
                 name: size

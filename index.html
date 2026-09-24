@@ -534,7 +534,7 @@ async function init(){
     document.getElementById('heroClaim').textContent=h.citazione||'';
     document.getElementById('heroBtn').textContent=h.btn_testo||'Scopri di più →';
     if(h.foto_hero && h.foto_hero!='/assets/img/hero.jpg'){
-      document.getElementById('heroImgWrap').innerHTML=`<img src="${h.foto_hero}" alt="${h.foto_hero_alt||'Yoga'}">`;
+      document.getElementById('heroImgWrap').innerHTML=`<img src="${h.foto_hero}" alt="${h.foto_hero_alt||'Yoga'}" fetchpriority="high">`;
     }
   }
   if(g) updateLdJson(g,h);
@@ -549,7 +549,7 @@ async function init(){
     document.getElementById('introBtnTxt').textContent=i.btn_wa||'Prenota';
     document.getElementById('introNota').textContent=i.nota||'';
     if(i.foto_disciplina && i.foto_disciplina!='/assets/img/disciplina.jpg'){
-      document.getElementById('introImgWrap').innerHTML=`<img src="${i.foto_disciplina}" alt="Yoga">`;
+      document.getElementById('introImgWrap').innerHTML=`<img src="${i.foto_disciplina}" alt="Yoga" loading="lazy">`;
     }
     if(g) document.getElementById('introBtnWa').href=waLink(g.whatsapp||'',i.btn_wa||'Prenota');
   }
@@ -619,7 +619,7 @@ async function init(){
     setText('galleriaT2',gal.titolo2);
     (gal.foto||[]).forEach((f,idx)=>{
       const cls=f.size==='wide'?'wide':f.size==='tall'?'tall':'';
-      gallGrid.innerHTML+=`<div class="g-item ${cls}" data-type="photo"><img src="${f.src}" alt="${f.label||'Foto '+(idx+1)}"></div>`;
+      gallGrid.innerHTML+=`<div class="g-item ${cls}" data-type="photo"><img src="${f.src}" alt="${f.label||'Foto '+(idx+1)}" loading="lazy"></div>`;
     });
     (gal.video||[]).forEach(v=>{
       const yt=v.url.replace('watch?v=','embed/').replace('youtu.be/','youtube.com/embed/');
