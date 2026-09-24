@@ -502,12 +502,12 @@ async function init(){
   // GENERALE
   const g=await fetchJSON('generale.json');
   if(g){
-    document.title=(g.nome_studio||'Il Fenicottero ASD')+' — Scuola di Yoga a Bari';
+    document.title='Yoga a Bari | '+(g.nome_studio||'Il Fenicottero ASD')+' — Scuola di Yoga Iyengar';
     document.getElementById('navNome').textContent=g.nome_studio;
     document.getElementById('footerNome').textContent=g.nome_studio;
     document.getElementById('footerCopy').textContent=`© ${new Date().getFullYear()} ${g.nome_studio} · ${g.piva||''}`;
     setWaButtons(g.whatsapp||'393400000000');
-    WA_NUM=g.whatsapp||'';
+    WA_NUM=g.whatsapp||'393400000000';
     setText('navScuola',g.nav_scuola);
     setText('navCorsiLbl',g.nav_corsi);
     setText('navOrariLbl',g.nav_orari);

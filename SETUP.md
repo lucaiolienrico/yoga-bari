@@ -98,6 +98,7 @@ Dopo il cambio dominio, aggiorna anche:
 - `url_sito` in `generale.json`
 - `og:url`, `<link rel="canonical">` e Homepage URL della OAuth App in `index.html`
 - Sitemap (`sitemap.xml`) e `robots.txt`
+- **`ALLOWED_ORIGIN` in `worker/worker.js`** — è hardcoded al dominio attuale per limitare i CORS (vedi STEP 3). Se non lo aggiorni e ridistribuisci con `wrangler deploy`, il pannello admin aperto dal nuovo dominio non riesce più a fare login (CORS bloccato dal browser)
 
 ---
 
