@@ -26,12 +26,14 @@ Per un nuovo progetto analogo:
 
 ## STEP 2 — Cloudflare Pages (già fatto)
 
-1. **dash.cloudflare.com** → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**
-2. Seleziona il repository → **Build settings**: framework preset "None", build command vuoto, output directory `/` (sito HTML statico puro)
-3. **Save and Deploy**
-4. ✅ Sito live su `<nome-progetto>.pages.dev` — ogni push su `main` fa auto-deploy
+Il progetto Pages `yoga-bari` **non è collegato a Git**. Al suo posto, `_worker.js` (Pages "advanced mode") serve ogni richiesta leggendo il file corrispondente da `raw.githubusercontent.com/lucaiolienrico/yoga-bari/main`:
 
-`_redirects` e `_headers` nella root gestiscono i redirect (`/admin` senza slash, fallback SPA) e gli header di sicurezza — **Cloudflare Pages non legge `netlify.toml`**, solo questi due file.
+- ogni salvataggio dal CMS (= commit su `main`) è live in ~5 minuti, **senza nessun deploy**
+- il repo deve restare **pubblico** (altrimenti raw.githubusercontent non è leggibile)
+- `_worker.js` imposta anche Content-Type, header di sicurezza e blocca `worker/`, `SETUP.md`, dotfile
+- **solo se modifichi `_worker.js` stesso** serve ridistribuire Pages (direct upload o `wrangler pages deploy . --project-name yoga-bari`)
+
+`_redirects` e `_headers` restano nel repo ma con `_worker.js` attivo non vengono usati da Pages — la logica equivalente è dentro `_worker.js`.
 
 ---
 
@@ -45,7 +47,7 @@ Sveltia CMS ha bisogno di autenticarsi su GitHub per scrivere sul repo. Non usa 
 2. Copia **Client ID** e genera un **Client Secret**
 3. **Cloudflare** → **Workers & Pages** → **Create** → **Worker** → nome a scelta (es. `yoga-bari-oauth`)
 4. Deploy del codice in `worker/worker.js` (via `wrangler deploy` da dentro `worker/`, o Quick Edit da dashboard)
-5. Imposta le secrets **solo da CLI locale** (non da dashboard, non farlo fare a Claude/Cloud — richiede `wrangler login`):
+5. Imposta le secrets (da CLI con `wrangler login`, oppure via API Cloudflare `PUT .../workers/scripts/yoga-bari-oauth/secrets`):
    ```bash
    cd worker
    wrangler secret put GITHUB_CLIENT_ID
@@ -55,7 +57,9 @@ Sveltia CMS ha bisogno di autenticarsi su GitHub per scrivere sul repo. Non usa 
 
 Il Worker gestisce anche la protezione anti-CSRF sul login (parametro `state` in cookie HttpOnly) e limita i CORS al dominio del sito — vedi commenti in `worker/worker.js`.
 
-**⚠️ Il Worker non si aggiorna da solo sul push.** A differenza di Cloudflare Pages, non c'è deploy automatico da GitHub: ogni modifica a `worker/worker.js` richiede un `wrangler deploy` manuale (o Quick Edit da dashboard) per andare live.
+**Deploy automatico del Worker (Workers Builds):** il Worker è collegato al repo; ogni push su `main` esegue `npx wrangler deploy` con **root directory `/worker`**. ⚠️ Non riportare mai la root directory a `/`: nella root non c'è `wrangler.toml`, e wrangler pubblicherebbe l'intero sito statico al posto del codice OAuth — `/auth` diventa 404 e le secrets vengono perse. È esattamente il bug che ha impedito il login dal 27 agosto al 25 settembre 2026.
+
+**Formato del messaggio a Sveltia CMS:** il popup deve inviare `{ token, refreshToken? }`, non la risposta grezza di GitHub (`access_token`) — Sveltia controlla la chiave `token` e altrimenti considera il login fallito.
 
 ---
 
@@ -120,6 +124,7 @@ Dopo il cambio dominio, aggiorna anche:
 
 ```
 yoga-bari/
+├── _worker.js           ← Pages: serve il sito live dal branch main (vedi STEP 2)
 ├── index.html           ← sito pubblico (legge i JSON, popola meta tag e JSON-LD)
 ├── robots.txt            ← direttive crawler + link alla sitemap
 ├── sitemap.xml            ← sitemap SEO
@@ -138,7 +143,7 @@ yoga-bari/
 ├── rating.json                    ← punteggi Google, Facebook ecc.
 ├── contatti.json                   ← testi sezione contatti
 └── worker/
-    ├── worker.js                    ← proxy OAuth GitHub (deploy manuale, vedi STEP 3)
+    ├── worker.js                    ← proxy OAuth GitHub (auto-deploy da main, vedi STEP 3)
     └── wrangler.toml                 ← config Worker (nessun segreto)
 ```
 
