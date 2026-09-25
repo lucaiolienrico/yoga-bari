@@ -77,7 +77,14 @@ export default {
         });
       }
 
-      const tokenData = JSON.stringify(data);
+      // Sveltia CMS si aspetta { token, refreshToken? } nel messaggio postMessage,
+      // non la risposta grezza di GitHub che usa "access_token" — senza questa
+      // rimappatura il popup handler di Sveltia non trova mai la chiave "token"
+      // e considera il login fallito ad ogni tentativo.
+      const tokenData = JSON.stringify({
+        token: data.access_token,
+        ...(data.refresh_token ? { refreshToken: data.refresh_token } : {}),
+      });
       const script = `<!DOCTYPE html>
 <html>
 <head><title>Authenticating...</title></head>
