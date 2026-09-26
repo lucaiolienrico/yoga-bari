@@ -226,7 +226,13 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
 @media(max-width:960px){
   nav{padding:0 1.5rem}
   .nav-links{display:none}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--cream);padding:1rem 1.5rem 1.4rem;gap:.2rem;box-shadow:0 12px 32px rgba(0,0,0,.08);border-bottom:1px solid rgba(196,120,154,.12);margin-right:0}
+  .nav-links.open a{padding:.85rem 1rem}
   .nav-hamburger{display:flex}
+  .nav-hamburger.active span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-hamburger.active span:nth-child(2){opacity:0}
+  .nav-hamburger.active span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .nav-hamburger span{transition:transform .25s,opacity .25s}
   #hero{grid-template-columns:1fr}
   .hero-right{height:320px}
   .hero-left{padding:3rem 1.5rem}
@@ -283,7 +289,7 @@ footer{background:#1E1A22;padding:1.8rem 3rem;display:flex;align-items:center;ju
       <a id="navYt" href="#" class="soc-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#FAF8F5" stroke="none"/></svg></a>
     </div>
   </div>
-  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -736,6 +742,18 @@ function openVideo(url){
 window.addEventListener('scroll',()=>{
   document.getElementById('navbar').style.boxShadow=window.scrollY>40?'0 2px 20px rgba(196,120,154,.1)':'none';
 });
+
+// Menu mobile (hamburger)
+const hamburger=document.querySelector('.nav-hamburger');
+const navLinksMenu=document.querySelector('.nav-links');
+function toggleMobileMenu(open){
+  const isOpen=open!=null?open:!navLinksMenu.classList.contains('open');
+  navLinksMenu.classList.toggle('open',isOpen);
+  hamburger.classList.toggle('active',isOpen);
+  hamburger.setAttribute('aria-expanded',isOpen);
+}
+hamburger.addEventListener('click',()=>toggleMobileMenu());
+navLinksMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMobileMenu(false)));
 
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
 init();
