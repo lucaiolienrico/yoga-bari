@@ -26,14 +26,13 @@ Per un nuovo progetto analogo:
 
 ## STEP 2 — Cloudflare Pages (già fatto)
 
-Il progetto Pages `yoga-bari` **non è collegato a Git**. Al suo posto, `_worker.js` (Pages "advanced mode") serve ogni richiesta leggendo il file corrispondente da `raw.githubusercontent.com/lucaiolienrico/yoga-bari/main`:
+Il progetto Pages `yoga-bari` è collegato al repo GitHub **via integrazione Git nativa** (stessa autorizzazione GitHub App già usata per il Worker — vedi STEP 3, sezione Workers Builds). Funziona con **repo privata**: Cloudflare legge il codice con un accesso autenticato proprio, non serve nessun file pubblico.
 
-- ogni salvataggio dal CMS (= commit su `main`) è live in ~5 minuti, **senza nessun deploy**
-- il repo deve restare **pubblico** (altrimenti raw.githubusercontent non è leggibile)
-- `_worker.js` imposta anche Content-Type, header di sicurezza e blocca `worker/`, `SETUP.md`, dotfile
-- **solo se modifichi `_worker.js` stesso** serve ridistribuire Pages (direct upload o `wrangler pages deploy . --project-name yoga-bari`)
+- ogni push su `main` (compresi i salvataggi del CMS) fa auto-deploy in ~1 minuto
+- build settings: framework preset "None", build command vuoto, output directory `/` (sito HTML statico puro, nessuna build da eseguire)
+- `_redirects` e `_headers` nella root gestiscono redirect e security header — **Cloudflare Pages non legge `netlify.toml`**, solo questi due file
 
-`_redirects` e `_headers` restano nel repo ma con `_worker.js` attivo non vengono usati da Pages — la logica equivalente è dentro `_worker.js`.
+⚠️ **Non usare `_worker.js` in root per "servire" il sito da un repo pubblico** — è stato un tentativo (poi rimosso) che avrebbe reso necessario rendere pubblico un repo che deve restare privato. Con l'integrazione Git corretta non serve: Cloudflare clona il repo privato da solo a ogni deploy.
 
 ---
 
