@@ -123,12 +123,13 @@ Dopo il cambio dominio, aggiorna anche:
 
 ```
 yoga-bari/
-├── _worker.js           ← Pages: serve il sito live dal branch main (vedi STEP 2)
 ├── index.html           ← sito pubblico (legge i JSON, popola meta tag e JSON-LD)
 ├── robots.txt            ← direttive crawler + link alla sitemap
-├── sitemap.xml            ← sitemap SEO
+├── sitemap.xml            ← sitemap SEO — <lastmod> aggiornato automaticamente (vedi sotto)
 ├── _redirects            ← regole di routing Cloudflare Pages (/admin, fallback SPA)
 ├── _headers               ← security headers Cloudflare Pages
+├── .github/workflows/
+│   └── update-sitemap-lastmod.yml  ← aggiorna <lastmod> in sitemap.xml ad ogni push su main
 ├── admin/
 │   ├── index.html         ← pannello CMS (Sveltia)
 │   └── config.yml         ← definisce le collezioni/campi editabili
@@ -147,6 +148,16 @@ yoga-bari/
 ```
 
 Ogni file JSON di sezione ha un campo `visibile` (boolean) che nasconde l'intera sezione dal sito se impostato a `false` dal pannello.
+
+**`<lastmod>` sitemap:** il sito è statico puro, senza build step — Cloudflare
+Pages pubblica il repo così com'è. Per tenere aggiornata la data in
+`sitemap.xml` senza toccare la pipeline di deploy (già causa di un'interruzione
+in passato per un errore simile sul Worker), una GitHub Action dedicata
+(`.github/workflows/update-sitemap-lastmod.yml`) aggiorna e ricommitta
+`sitemap.xml` ad ogni push reale su `main`. Effetto collaterale accettato: un
+push di contenuto genera due deploy Cloudflare ravvicinati (quello del
+contenuto, poi quello del commit `lastmod`) — irrilevante per i volumi di un
+sito come questo.
 
 ---
 
