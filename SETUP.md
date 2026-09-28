@@ -96,13 +96,12 @@ Per un nuovo progetto, aggiorna `repo` e `base_url` con i tuoi valori, poi commi
 3. Se il dominio è già su Cloudflare: attivazione automatica. Altrimenti configura i DNS indicati dal pannello presso il tuo registrar
 4. ✅ HTTPS gratuito automatico
 
-Dopo il cambio dominio, aggiorna anche:
-- `site_url` / `display_url` in `admin/config.yml`
-- `url_sito` in `generale.json`
-- `og:url`, `<link rel="canonical">` e Homepage URL della OAuth App in `index.html`
-- Sitemap (`sitemap.xml`) e `robots.txt`
+Dopo il cambio dominio:
+- **`url_sito`** dal pannello CMS (Info Generali): la build SEO aggiorna da sola canonical, og:url, og:image, JSON-LD, sitemap, `llms*.txt`
+- `Sitemap:` in `robots.txt` si aggiorna da solo; in `_headers` sostituisci `yoga-bari.pages.dev` nella regola delle anteprime
+- `site_url` / `display_url` in `admin/config.yml` e Homepage URL della OAuth App GitHub
 - **`ALLOWED_ORIGIN` in `worker/worker.js`** — è hardcoded al dominio attuale per limitare i CORS (vedi STEP 3). Se non lo aggiorni e ridistribuisci con `wrangler deploy`, il pannello admin aperto dal nuovo dominio non riesce più a fare login (CORS bloccato dal browser)
-- **Cloudflare Web Analytics** — il sito è registrato per l'host `yoga-bari.pages.dev` (STEP 7): col dominio nuovo crea un nuovo sito Web Analytics e sostituisci il token nello snippet in fondo a `index.html`
+- **Cloudflare Web Analytics** — crea un nuovo sito per il nuovo host e sostituisci il token nello snippet in fondo a `index.html` (STEP 7)
 - **Google Search Console** — aggiungi la nuova proprietà e riverifica (STEP 7)
 
 ---
@@ -147,11 +146,14 @@ Garante Privacy ha già sanzionato configurazioni non conformi). È gratuito.
 yoga-bari/
 ├── index.html           ← sito pubblico (legge i JSON, popola meta tag e JSON-LD)
 ├── robots.txt            ← direttive crawler + link alla sitemap
-├── sitemap.xml            ← sitemap SEO — <lastmod> aggiornato automaticamente (vedi sotto)
-├── _redirects            ← regole di routing Cloudflare Pages (/admin, fallback SPA)
-├── _headers               ← security headers Cloudflare Pages
+├── sitemap.xml            ← GENERATO da scripts/build-seo.mjs (non modificare a mano)
+├── llms.txt · llms-full.txt ← GENERATI: riassunto del sito in testo semplice per le AI
+├── _redirects            ← regole di routing Cloudflare Pages (/admin)
+├── _headers               ← security headers, CSP home, noindex admin/json/anteprime
+├── scripts/build-seo.mjs  ← genera i file SEO/GEO dai JSON del CMS (vedi sotto)
+├── assets/img/og-cover.png ← immagine anteprima social (WhatsApp/Facebook/Google)
 ├── .github/workflows/
-│   └── update-sitemap-lastmod.yml  ← aggiorna <lastmod> in sitemap.xml ad ogni push su main
+│   └── seo-build.yml      ← lancia lo script ad ogni push su main (anche i salvataggi CMS)
 ├── admin/
 │   ├── index.html         ← pannello CMS (Sveltia)
 │   └── config.yml         ← definisce le collezioni/campi editabili
@@ -171,15 +173,19 @@ yoga-bari/
 
 Ogni file JSON di sezione ha un campo `visibile` (boolean) che nasconde l'intera sezione dal sito se impostato a `false` dal pannello.
 
-**`<lastmod>` sitemap:** il sito è statico puro, senza build step — Cloudflare
-Pages pubblica il repo così com'è. Per tenere aggiornata la data in
-`sitemap.xml` senza toccare la pipeline di deploy (già causa di un'interruzione
-in passato per un errore simile sul Worker), una GitHub Action dedicata
-(`.github/workflows/update-sitemap-lastmod.yml`) aggiorna e ricommitta
-`sitemap.xml` ad ogni push reale su `main`. Effetto collaterale accettato: un
-push di contenuto genera due deploy Cloudflare ravvicinati (quello del
-contenuto, poi quello del commit `lastmod`) — irrilevante per i volumi di un
-sito come questo.
+**Build SEO/GEO (`scripts/build-seo.mjs`):** il sito è statico puro e tutto il
+testo viene disegnato da JavaScript a partire dai JSON — ma i crawler delle AI
+(GPTBot, ClaudeBot, PerplexityBot) **non eseguono JavaScript** e vedrebbero una
+pagina vuota. Lo script (Node, zero dipendenze) legge i JSON del CMS e scrive
+nell'HTML: testi di hero/intro/titoli, JSON-LD (`ExerciseGym` + `Course`,
+orari di apertura strutturati), un blocco `<noscript>` con corsi/orari/contatti,
+più `llms.txt`, `llms-full.txt`, `sitemap.xml` (con `<lastmod>`), canonical e
+og:url/og:image. Gira nella GitHub Action `seo-build.yml` ad ogni push su `main`,
+quindi ogni modifica del cliente dal CMS aggiorna da sola anche la parte SEO/GEO
+(2 deploy ravvicinati: contenuto + file rigenerati). In locale: `node scripts/build-seo.mjs`.
+Non pubblica di proposito punteggi/recensioni/testimonianze (contenuti
+autodichiarati che le AI ripeterebbero come fatti). Se `url_sito` non è un
+URL https valido lo script si ferma senza modificare nulla.
 
 ---
 

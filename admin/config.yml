@@ -42,12 +42,14 @@ collections:
         label: "Info Generali"
         file: "generale.json"
         fields:
-          - { label: "Nome Studio", name: "nome_studio", widget: "string", default: "Iyengar Yoga Bari" }
+          - { label: "Nome Studio", name: "nome_studio", widget: "string", default: "Il Fenicottero ASD", hint: "Scrivilo sempre identico (es. Il Fenicottero ASD, con le stesse maiuscole ovunque): Google e le AI riconoscono meglio il brand se il nome è coerente" }
           - { label: "Slogan / Sottotitolo", name: "slogan", widget: "string" }
           - { label: "URL Sito", name: "url_sito", widget: "string", required: false }
           - { label: "📞 Numero WhatsApp", name: "whatsapp", widget: "string", hint: "Formato internazionale senza +: es. 393401234567" }
           - { label: "📧 Email", name: "email", widget: "string" }
           - { label: "📍 Indirizzo", name: "indirizzo", widget: "string" }
+          - { label: "🗺️ Latitudine (opzionale)", name: "latitudine", widget: "number", value_type: "float", required: false, hint: "Per la SEO locale. Su Google Maps: tasto destro sul punto esatto della sede → il primo numero è la latitudine (es. 41.1171)" }
+          - { label: "🗺️ Longitudine (opzionale)", name: "longitudine", widget: "number", value_type: "float", required: false, hint: "Su Google Maps: tasto destro sul punto esatto della sede → il secondo numero è la longitudine (es. 16.8719)" }
           - { label: "🕐 Orari di apertura", name: "orari_apertura", widget: "string" }
           - { label: "P.IVA", name: "piva", widget: "string" }
           - { label: "Link Facebook", name: "social_fb", widget: "string", required: false }

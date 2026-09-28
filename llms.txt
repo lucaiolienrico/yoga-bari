@@ -1,0 +1,12 @@
+# Il fenicottero ASD
+
+> Scuola di Yoga Iyengar a Bari (Corso Sonnino 148, Bari, BA 70121). Corsi: Hatha Yoga, Vinyasa Flow, Yin Yoga, Yoga Nidra, Pranayama, Meditazione. Prima lezione gratuita.
+
+## Sito
+- [Home page](https://yoga-bari.pages.dev/): presentazione della scuola e del metodo Iyengar
+- [Corsi](https://yoga-bari.pages.dev/#corsi): discipline, livelli, durata e numero massimo di partecipanti
+- [Orari](https://yoga-bari.pages.dev/#orari): programmazione settimanale delle lezioni
+- [Contatti](https://yoga-bari.pages.dev/#contatti): indirizzo, telefono, email e orari di apertura
+
+## Approfondimenti
+- [Tutte le informazioni in testo semplice](https://yoga-bari.pages.dev/llms-full.txt): corsi, orari settimanali e contatti in un unico file

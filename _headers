@@ -1,3 +1,25 @@
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000
+
+# CSP solo sulla home: /admin carica Sveltia CMS da CDN e ha esigenze diverse.
+# 'unsafe-inline' serve perché il sito usa <style>, <script> e onclick inline.
+/
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
+
+# Pannello CMS: mai indicizzato (noindex via header, non via robots.txt)
+/admin
+  X-Robots-Tag: noindex, nofollow
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+
+# I JSON dei contenuti devono restare leggibili (il sito e Googlebot li caricano) ma non indicizzabili come pagine
+/*.json
+  X-Robots-Tag: noindex
+
+# Anteprime di branch/deploy (*.yoga-bari.pages.dev): duplicati della home, da non indicizzare
+https://:version.yoga-bari.pages.dev/*
+  X-Robots-Tag: noindex

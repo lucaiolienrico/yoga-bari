@@ -1,5 +1,23 @@
+# Il Fenicottero ASD
+# I crawler dei motori generativi (AI) sono consentiti di proposito:
+# bloccarli significherebbe non essere citati nelle risposte di ChatGPT, Perplexity, Claude ecc.
+# Nessun blocco dei file .json: Googlebot deve leggerli per renderizzare i contenuti del sito.
 User-agent: *
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
 Allow: /
-Disallow: /admin
+Disallow: /worker/
+Disallow: /scripts/
+Disallow: /SETUP.md
+
+# /admin non è bloccato qui: il noindex arriva dall'header X-Robots-Tag (vedi _headers).
+# Con Disallow Google non potrebbe leggere il noindex e potrebbe comunque indicizzare l'URL nudo.
 
 Sitemap: https://yoga-bari.pages.dev/sitemap.xml

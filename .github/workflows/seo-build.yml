@@ -1,0 +1,48 @@
+name: Build SEO/GEO
+
+# Il sito è statico puro, senza build step (Cloudflare Pages pubblica il repo
+# così com'è). Questa action rigenera dai JSON del CMS ciò che deve esistere
+# come HTML/testo statico per i crawler che non eseguono JavaScript: testi in
+# index.html, JSON-LD, <noscript>, llms.txt, llms-full.txt, sitemap.xml
+# (con <lastmod>). Parte ad ogni push su main, compresi i salvataggi del CMS.
+# I push fatti con GITHUB_TOKEN non ri-triggerano i workflow: nessun loop.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Genera file SEO/GEO
+        run: node scripts/build-seo.mjs
+
+      - name: Commit se cambiato
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add index.html sitemap.xml robots.txt llms.txt llms-full.txt
+            git commit -m "chore: rigenera file SEO/GEO dai contenuti"
+            # un salvataggio del CMS può essere arrivato mentre l'action girava
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "Nessuna modifica: file SEO/GEO già allineati"
+          fi
