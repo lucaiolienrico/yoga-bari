@@ -102,6 +102,28 @@ Dopo il cambio dominio, aggiorna anche:
 - `og:url`, `<link rel="canonical">` e Homepage URL della OAuth App in `index.html`
 - Sitemap (`sitemap.xml`) e `robots.txt`
 - **`ALLOWED_ORIGIN` in `worker/worker.js`** — è hardcoded al dominio attuale per limitare i CORS (vedi STEP 3). Se non lo aggiorni e ridistribuisci con `wrangler deploy`, il pannello admin aperto dal nuovo dominio non riesce più a fare login (CORS bloccato dal browser)
+- **Cloudflare Web Analytics** — il sito è registrato per l'host `yoga-bari.pages.dev` (STEP 7): col dominio nuovo crea un nuovo sito Web Analytics e sostituisci il token nello snippet in fondo a `index.html`
+- **Google Search Console** — aggiungi la nuova proprietà e riverifica (STEP 7)
+
+---
+
+## STEP 7 — Analytics e Google Search Console
+
+### Analytics: Cloudflare Web Analytics (già attivo)
+Scelto al posto di Google Analytics 4: **non usa cookie né dati personali**, quindi
+non serve il banner di consenso (GA4 in Italia richiede consenso esplicito e il
+Garante Privacy ha già sanzionato configurazioni non conformi). È gratuito.
+- Sito registrato: host `yoga-bari.pages.dev` — account Cloudflare → **Analytics & Logs → Web Analytics**
+- Snippet in fondo a `index.html` (`data-cf-beacon`): il token è pubblico per design, non è un segreto
+- Metriche: visite, pagine, paesi, dispositivi, Core Web Vitals reali
+
+### Google Search Console (da completare — serve l'account Google del titolare)
+1. https://search.google.com/search-console → **Aggiungi proprietà** → tipo **Prefisso URL** → `https://yoga-bari.pages.dev/` (il tipo "Dominio" richiede DNS, non disponibile su `pages.dev`)
+2. Metodo di verifica **Tag HTML**: copia il valore `content="..."` del meta tag proposto
+3. Incolla in `index.html`, dentro `<head>`: `<meta name="google-site-verification" content="VALORE">` → commit → attendi il deploy → **Verifica**
+   (deve stare nel codice statico, non iniettato da JS: il crawler di verifica non è affidabile con tag creati via script)
+4. In Search Console → **Sitemap** → invia `sitemap.xml`
+5. Con il dominio custom (STEP 6): crea una nuova proprietà e ripeti
 
 ---
 
